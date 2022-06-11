@@ -90,19 +90,18 @@ end
 //S, I, D, H
 always@(posedge clk or posedge reset) begin
 	if(reset) begin
-		for(i=0; i=<64; i=i+1) begin
+		for(i=0; i<=64; i=i+1) begin
 			H_map[i][0] <= 0;
 			I_map[i][0] <= -8;
 			D_map[i][0] <= -8;
 		end
-		for(j=0; j=<48; j=j+1) begin
+		for(j=0; j<=48; j=j+1) begin
 			H_map[0][j] <= 0;
 			I_map[0][j] <= -8;
 			D_map[0][j] <= -8;
 		end
 	end
 	else begin
-		//前面input state時也會產出map_value, 所以要限制CAL state時才存入陣列
 		if(ns == CAL) begin
 			S_map[x][y] <= S_map_value;
 			I_map[x][y] <= I_map_value;
