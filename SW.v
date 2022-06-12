@@ -76,8 +76,22 @@ always@(*)begin
 			D_map_value = H_map[(counter+2-i)-1][i] - open > D_map[(counter+2-i)-1][i] - extend ? H_map[(counter+2-i)-1][i] - open : D_map[(counter+2-i)-1][i] - extend;
 		end
 	end
-	else if(64 <= counter <=   )begin
-		
+	else if(64 <= counter <= 79)begin
+		for(i=1; i<(counter%64)+2; i=i+1)begin
+			S_map[i][]
+		end
+	end
+	else if(80 <= counter <= 127)begin
+	
+	end
+	else if(128 <= counter <= 143)begin
+	
+	end
+	else if(144 <= counter <= 191)begin
+	
+	end
+	else if(192 <= counter <= 207)begin
+	
 	end
 end
 
