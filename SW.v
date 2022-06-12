@@ -39,7 +39,7 @@ reg[1:0] R[1:64];
 reg[1:0] Q[1:48];
 
 reg[1:0] cs, ns; //current state, next state
-reg[3:0] counter;
+reg[11:0] counter;
 
 reg finish_r;
 reg [WIDTH_SCORE - 1:0]   max_r;
