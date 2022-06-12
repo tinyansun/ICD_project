@@ -59,45 +59,47 @@ reg  signed[4:0] H_map_value;
 //assign x = counter%64 + 1; 
 //assign y = counter/64 + 1; 
 
-//CAL state??
+
 always@(*)begin
-	//cycle1 -> counter = 0, cycle2 -> counter = 1.....
-	if(counter <= 15)begin
-		for(i=1; i<counter+2; i=i+1)begin
-			S_map[i][counter+2-i] = R[i] == Q[counter+2-i] ? match : mismatch;
-			I_map[i][counter+2-i] = H_map[i][(counter+2-i)-1] - open > I_map[i][(counter+2-i)-1] - extend ? H_map[i][(counter+2-i)-1] - open : I_map[i][(counter+2-i)-1] - extend;
-			D_map[i][counter+2-i] = H_map[i-1][(counter+2-i)] - open > D_map[i-1][(counter+2-i)] - extend ? H_map[i-1][(counter+2-i)] - open : D_map[i-1][(counter+2-i)] - extend;
+	if(ns == CAL)begin
+		//cycle1 -> counter = 0, cycle2 -> counter = 1.....
+		if(counter <= 15)begin
+			for(i=1; i<counter+2; i=i+1)begin
+				S_map[i][counter+2-i] = R[i] == Q[counter+2-i] ? match : mismatch;
+				I_map[i][counter+2-i] = H_map[i][(counter+2-i)-1] - open > I_map[i][(counter+2-i)-1] - extend ? H_map[i][(counter+2-i)-1] - open : I_map[i][(counter+2-i)-1] - extend;
+				D_map[i][counter+2-i] = H_map[i-1][(counter+2-i)] - open > D_map[i-1][(counter+2-i)] - extend ? H_map[i-1][(counter+2-i)] - open : D_map[i-1][(counter+2-i)] - extend;
+			end
 		end
-	end
-	else if(16 <= counter <= 63)begin
-		for(i=1; i<=16; i=i+1)begin
-			S_map[counter+2-i][i] = R[counter+2-i] == Q[i] ? match : mismatch;
-			I_map[(counter+2-i)][i] = H_map[(counter+2-i)][i-1] - open > I_map[(counter+2-i)][i-1] - extend ? H_map[(counter+2-i)][i-1] - open : I_map[(counter+2-i)][i-1] - extend;
-			D_map[(counter+2-i)][i] = H_map[(counter+2-i)-1][i] - open > D_map[(counter+2-i)-1][i] - extend ? H_map[(counter+2-i)-1][i] - open : D_map[(counter+2-i)-1][i] - extend;
+		else if(16 <= counter <= 63)begin
+			for(i=1; i<=16; i=i+1)begin
+				S_map[counter+2-i][i] = R[counter+2-i] == Q[i] ? match : mismatch;
+				I_map[(counter+2-i)][i] = H_map[(counter+2-i)][i-1] - open > I_map[(counter+2-i)][i-1] - extend ? H_map[(counter+2-i)][i-1] - open : I_map[(counter+2-i)][i-1] - extend;
+				D_map[(counter+2-i)][i] = H_map[(counter+2-i)-1][i] - open > D_map[(counter+2-i)-1][i] - extend ? H_map[(counter+2-i)-1][i] - open : D_map[(counter+2-i)-1][i] - extend;
+			end
 		end
-	end
-	else if(64 <= counter <= 79)begin
-		for(i=1; i<(counter%64)+2; i=i+1)begin
-			S_map[i][]
+		else if(64 <= counter <= 79)begin
+			for(i=1; i<(counter%64)+2; i=i+1)begin
+				S_map[i][]
+			end
 		end
-	end
-	else if(80 <= counter <= 127)begin
-	
-	end
-	else if(128 <= counter <= 143)begin
-	
-	end
-	else if(144 <= counter <= 191)begin
-	
-	end
-	else if(192 <= counter <= 207)begin
-	
+		else if(80 <= counter <= 127)begin
+		
+		end
+		else if(128 <= counter <= 143)begin
+		
+		end
+		else if(144 <= counter <= 191)begin
+		
+		end
+		else if(192 <= counter <= 207)begin
+		
+		end
 	end
 end
 
-assign S_map_value = R[x] == Q[y]? match : mismatch;
-assign I_map_value = H_map[x][y-1] - open > I_map[x][y-1] - extend ? H_map[x][y-1] - open : I_map[x][y-1] - extend;
-assign D_map_value = H_map[x-1][y] - open > D_map[x-1][y] - extend ? H_map[x-1][y] - open : D_map[x-1][y] - extend;
+//assign S_map_value = R[x] == Q[y]? match : mismatch;
+//assign I_map_value = H_map[x][y-1] - open > I_map[x][y-1] - extend ? H_map[x][y-1] - open : I_map[x][y-1] - extend;
+//assign D_map_value = H_map[x-1][y] - open > D_map[x-1][y] - extend ? H_map[x-1][y] - open : D_map[x-1][y] - extend;
 
 always@(*) begin
 	if(	H_map[x-1][y-1] + S_map_value >= I_map_value && 
