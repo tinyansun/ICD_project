@@ -56,8 +56,30 @@ wire signed[3:0] I_map_value;
 wire signed[3:0] D_map_value;
 reg  signed[4:0] H_map_value;
 
-assign x = counter%64 + 1; 
-assign y = counter/64 + 1; 
+//assign x = counter%64 + 1; 
+//assign y = counter/64 + 1; 
+
+//CAL state??
+always@(*)begin
+	//cycle1 -> counter = 0, cycle2 -> counter = 1.....
+	if(counter <= 15)begin
+		for(i=1; i<counter+2; i=i+1)begin
+			S_map[i][counter+2-i] = R[i] == Q[counter+2-i] ? match : mismatch;
+			I_map[i][counter+2-i] = H_map[i][(counter+2-i)-1] - open > I_map[i][(counter+2-i)-1] - extend ? H_map[i][(counter+2-i)-1] - open : I_map[i][(counter+2-i)-1] - extend;
+			D_map[i][counter+2-i] = H_map[i-1][(counter+2-i)] - open > D_map[i-1][(counter+2-i)] - extend ? H_map[i-1][(counter+2-i)] - open : D_map[i-1][(counter+2-i)] - extend;
+		end
+	end
+	else if(16 <= counter <= 63)begin
+		for(i=1; i<=16; i=i+1)begin
+			S_map[counter+2-i][i] = R[counter+2-i] == Q[i] ? match : mismatch;
+			I_map_value = H_map[(counter+2-i)][i-1] - open > I_map[(counter+2-i)][i-1] - extend ? H_map[(counter+2-i)][i-1] - open : I_map[(counter+2-i)][i-1] - extend;
+			D_map_value = H_map[(counter+2-i)-1][i] - open > D_map[(counter+2-i)-1][i] - extend ? H_map[(counter+2-i)-1][i] - open : D_map[(counter+2-i)-1][i] - extend;
+		end
+	end
+	else if(64 <= counter <=   )begin
+		
+	end
+end
 
 assign S_map_value = R[x] == Q[y]? match : mismatch;
 assign I_map_value = H_map[x][y-1] - open > I_map[x][y-1] - extend ? H_map[x][y-1] - open : I_map[x][y-1] - extend;
