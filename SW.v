@@ -11,6 +11,8 @@ module SW #(parameter WIDTH_SCORE = 8, parameter WIDTH_POS_REF = 7, parameter WI
     output [WIDTH_POS_QUERY - 1:0]   pos_query
 );
 
+// test for github
+
 //------------------------------------------------------------------
 // parameter
 //------------------------------------------------------------------
