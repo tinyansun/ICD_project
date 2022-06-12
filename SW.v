@@ -72,8 +72,8 @@ always@(*)begin
 	else if(16 <= counter <= 63)begin
 		for(i=1; i<=16; i=i+1)begin
 			S_map[counter+2-i][i] = R[counter+2-i] == Q[i] ? match : mismatch;
-			I_map_value = H_map[(counter+2-i)][i-1] - open > I_map[(counter+2-i)][i-1] - extend ? H_map[(counter+2-i)][i-1] - open : I_map[(counter+2-i)][i-1] - extend;
-			D_map_value = H_map[(counter+2-i)-1][i] - open > D_map[(counter+2-i)-1][i] - extend ? H_map[(counter+2-i)-1][i] - open : D_map[(counter+2-i)-1][i] - extend;
+			I_map[(counter+2-i)][i] = H_map[(counter+2-i)][i-1] - open > I_map[(counter+2-i)][i-1] - extend ? H_map[(counter+2-i)][i-1] - open : I_map[(counter+2-i)][i-1] - extend;
+			D_map[(counter+2-i)][i] = H_map[(counter+2-i)-1][i] - open > D_map[(counter+2-i)-1][i] - extend ? H_map[(counter+2-i)-1][i] - open : D_map[(counter+2-i)-1][i] - extend;
 		end
 	end
 	else if(64 <= counter <= 79)begin
