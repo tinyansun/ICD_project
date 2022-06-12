@@ -90,7 +90,11 @@ always@(*)begin
 			end
 		end
 		else if(80 <= counter <= 127)begin
-		
+			for(i=17; i<=32; i=i+1)begin
+				S_map[counter-46-i][i] = R[counter-46-i] == Q[i] ? match : mismatch;
+				I_map[counter-46-i][i] = H_map[counter-46-i][i-1] - open > I_map[counter-46-i][i-1] - extend ? H_map[counter-46-i][i-1] - open : I_map[counter-46-i][i-1] - extend;
+				D_map[counter-46-i][i] = H_map[(counter-46-i)-1][i] - open > D_map[(counter-46-i)-1][i] - extend ? H_map[(counter-46-i)-1][i] - open : D_map[(counter-46-i)-1][i] - extend;
+			end
 		end
 		else if(128 <= counter <= 143)begin
 		
