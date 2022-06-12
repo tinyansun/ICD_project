@@ -78,8 +78,15 @@ always@(*)begin
 			end
 		end
 		else if(64 <= counter <= 79)begin
-			for(i=1; i<(counter%64)+2; i=i+1)begin
-				S_map[i][]
+			for(i=1; i<counter-62; i=i+1)begin
+				S_map[i][counter-46-i] = R[i] == Q[counter-46-i] ? match : mismatch;
+				I_map[i][counter-46-i] = H_map[i][(counter-46-i)-1] - open > I_map[i][(counter-46-i)-1] - extend ? H_map[i][(counter-46-i)-1] - open : I_map[i][(counter-46-i)-1] - extend;
+				D_map[i][counter-46-i] = H_map[i-1][(counter-46-i)] - open > D_map[i-1][(counter-46-i)] - extend ? H_map[i-1][(counter-46-i)] - open : D_map[i-1][(counter-46-i)] - extend;
+			end
+			for(i=64; i>counter-15; i=i-1)begin
+				S_map[i][counter+2-i] = R[i] == Q[counter+2-i] ? match : mismatch;
+				I_map[i][counter+2-i] = H_map[i][(counter+2-i)-1] - open > I_map[i][(counter+2-i)-1] - extend ? H_map[i][(counter+2-i)-1] - open : I_map[i][(counter+2-i)-1] - extend;
+				D_map[i][counter+2-i] = H_map[i-1][(counter+2-i)] - open > D_map[i-1][(counter+2-i)] - extend ? H_map[i-1][(counter+2-i)] - open : D_map[i-1][(counter+2-i)] - extend;
 			end
 		end
 		else if(80 <= counter <= 127)begin
@@ -141,14 +148,14 @@ always@(posedge clk or posedge reset) begin
 			D_map[0][j] <= -8;
 		end
 	end
-	else begin
+	/*else begin
 		if(ns == CAL) begin
 			S_map[x][y] <= S_map_value;
 			I_map[x][y] <= I_map_value;
 			D_map[x][y] <= D_map_value;
 			H_map[x][y] <= H_map_value;
 		end
-	end
+	end*/
 end
 
 //counter
@@ -259,7 +266,7 @@ always @(*) begin
 				ns = CAL;
 		end
 		CAL:begin
-			if(counter == 3071)
+			if(counter == 207)
 				ns = OUTPUT;
 		end
 		OUTPUT:begin
