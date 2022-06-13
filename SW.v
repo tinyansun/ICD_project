@@ -68,6 +68,19 @@ always@(*)begin
 				S_map[i][counter+2-i] = R[i] == Q[counter+2-i] ? match : mismatch;
 				I_map[i][counter+2-i] = H_map[i][(counter+2-i)-1] - open > I_map[i][(counter+2-i)-1] - extend ? H_map[i][(counter+2-i)-1] - open : I_map[i][(counter+2-i)-1] - extend;
 				D_map[i][counter+2-i] = H_map[i-1][(counter+2-i)] - open > D_map[i-1][(counter+2-i)] - extend ? H_map[i-1][(counter+2-i)] - open : D_map[i-1][(counter+2-i)] - extend;
+				//H_map
+				if(	H_map[i-1][(counter+2-i)-1] + S_map[i][counter+2-i] >= I_map[i][counter+2-i] && H_map[i-1][(counter+2-i)-1] + S_map[i][counter+2-i] >= D_map[i][counter+2-i] && H_map[i-1][(counter+2-i)-1] + S_map[i][counter+2-i] >= 0)begin
+					H_map[i][counter+2-i] = H_map[x-1][(counter+2-i)-1] + S_map[i][counter+2-i];
+				end
+				else if(I_map[i][counter+2-i] >= H_map[x-1][(counter+2-i)-1] + S_map[i][counter+2-i] && I_map[i][counter+2-i] >= D_map[i][counter+2-i] && I_map[i][counter+2-i] >= 0)begin
+					H_map[i][counter+2-i] = I_map[i][counter+2-i];
+				end
+				else if(D_map[i][counter+2-i] >= H_map[x-1][(counter+2-i)-1] + S_map[i][counter+2-i] && D_map[i][counter+2-i] >= I_map[i][counter+2-i] && D_map[i][counter+2-i] >= 0)begin
+					H_map[i][counter+2-i] = D_map[i][counter+2-i];
+				end
+				else begin
+					H_map[i][counter+2-i] = 0;
+				end
 			end
 		end
 		else if(16 <= counter <= 63)begin
@@ -97,13 +110,31 @@ always@(*)begin
 			end
 		end
 		else if(128 <= counter <= 143)begin
-		
+			for(i=1; i<counter-126; i=i+1)begin
+				S_map[i][counter-94-i] = R[i] == Q[counter-94-i] ? match : mismatch;
+				I_map[i][counter-94-i] = H_map[i][(counter-94-i)-1] - open > I_map[i][(counter-94-i)-1] - extend ? H_map[i][(counter-94-i)-1] - open : I_map[i][(counter-94-i)-1] - extend;
+				D_map[i][counter-94-i] = H_map[i-1][(counter-94-i)] - open > D_map[i-1][(counter-94-i)] - extend ? H_map[i-1][(counter-94-i)] - open : D_map[i-1][(counter-94-i)] - extend;
+			end
+			
+			for(i=64; i>counter-79; i=i-1)begin
+				S_map[i][counter-46-i] = R[i] == Q[counter-46-i] ? match : mismatch;
+				I_map[i][counter-46-i] = H_map[i][(counter-46-i)-1] - open > I_map[i][(counter-46-i)-1] - extend ? H_map[i][(counter-46-i)-1] - open : I_map[i][(counter-46-i)-1] - extend;
+				D_map[i][counter-46-i] = H_map[i-1][(counter-46-i)] - open > D_map[i-1][(counter-46-i)] - extend ? H_map[i-1][(counter-46-i)] - open : D_map[i-1][(counter-46-i)] - extend;
+			end
 		end
 		else if(144 <= counter <= 191)begin
-		
+			for(i=33; i<=48; i=i+1)begin
+				S_map[counter-94-i][i] = R[counter-94-i] == Q[i] ? match : mismatch;
+				I_map[counter-94-i][i] = H_map[counter-94-i][i-1] - open > I_map[counter-94-i][i-1] - extend ? H_map[counter-94-i][i-1] - open : I_map[counter-94-i][i-1] - extend;
+				D_map[counter-94-i][i] = H_map[(counter-94-i)-1][i] - open > D_map[(counter-94-i)-1][i] - extend ? H_map[(counter-94-i)-1][i] - open : D_map[(counter-94-i)-1][i] - extend;
+			end
 		end
-		else if(192 <= counter <= 207)begin
-		
+		else if(192 <= counter <= 206)begin
+			for(i=64; i>counter-143; i=i+1)begin
+				S_map[i][counter-94-i] = R[i] == Q[counter-94-i] ? match : mismatch;
+				I_map[i][counter-94-i] = H_map[i][(counter-94-i)-1] - open > I_map[i][(counter-94-i)-1] - extend ? H_map[i][(counter-94-i)-1] - open : I_map[i][(counter-94-i)-1] - extend;
+				D_map[i][counter-94-i] = H_map[i-1][(counter-94-i)] - open > D_map[i-1][(counter-94-i)] - extend ? H_map[i-1][(counter-94-i)] - open : D_map[i-1][(counter-94-i)] - extend;
+			end
 		end
 	end
 end
@@ -113,19 +144,13 @@ end
 //assign D_map_value = H_map[x-1][y] - open > D_map[x-1][y] - extend ? H_map[x-1][y] - open : D_map[x-1][y] - extend;
 
 always@(*) begin
-	if(	H_map[x-1][y-1] + S_map_value >= I_map_value && 
-		H_map[x-1][y-1] + S_map_value >= D_map_value && 
-		H_map[x-1][y-1] + S_map_value >= 0)begin
+	if(	H_map[x-1][y-1] + S_map_value >= I_map_value && H_map[x-1][y-1] + S_map_value >= D_map_value && H_map[x-1][y-1] + S_map_value >= 0)begin
 			H_map_value = H_map[x-1][y-1] + S_map_value;
 	end
-	else if(I_map_value >= H_map[x-1][y-1] + S_map_value&&
-			I_map_value >= D_map_value &&
-			I_map_value >= 0)begin
+	else if(I_map_value >= H_map[x-1][y-1] + S_map_value && I_map_value >= D_map_value && I_map_value >= 0)begin
 			H_map_value = I_map_value;
 	end
-	else if(D_map_value >= H_map[x-1][y-1] + S_map_value&&
-			D_map_value >= I_map_value &&
-			D_map_value >= 0)begin
+	else if(D_map_value >= H_map[x-1][y-1] + S_map_value && D_map_value >= I_map_value && D_map_value >= 0)begin
 			H_map_value = D_map_value;
 	end
 	else begin
@@ -270,7 +295,7 @@ always @(*) begin
 				ns = CAL;
 		end
 		CAL:begin
-			if(counter == 207)
+			if(counter == 206)
 				ns = OUTPUT;
 		end
 		OUTPUT:begin
