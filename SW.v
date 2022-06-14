@@ -32,10 +32,10 @@ integer i,j;
 // reg & wire
 //------------------------------------------------------------------
 
-reg signed[2:0] S_map[1:64][1:48];
-reg signed[3:0] I_map[0:64][0:48];
-reg signed[3:0] D_map[0:64][0:48];
-reg signed[4:0] H_map[0:64][0:48];
+reg signed[6:0] S_map[1:64][1:48];
+reg signed[6:0] I_map[0:64][0:48];
+reg signed[6:0] D_map[0:64][0:48];
+reg signed[6:0] H_map[0:64][0:48];
 
 reg[1:0] R[1:64];
 reg[1:0] Q[1:48];
@@ -48,13 +48,20 @@ reg [WIDTH_SCORE - 1:0]   max_r;
 reg [WIDTH_POS_REF - 1:0]   pos_ref_r;
 reg [WIDTH_POS_QUERY - 1:0]   pos_query_r;
 
-wire[5:0] x;
+wire[6:0] x;
 wire[5:0] y;
 
+<<<<<<< HEAD
 //wire signed[2:0] S_map_value;
 //wire signed[3:0] I_map_value;
 //wire signed[3:0] D_map_value;
 reg  signed[4:0] H_map_value;
+=======
+wire signed[6:0] S_map_value;
+wire signed[6:0] I_map_value;
+wire signed[6:0] D_map_value;
+reg  signed[6:0] H_map_value;
+>>>>>>> 901e4a7b0ad4942795e32413d618d2fb5452b41f
 
 //assign x = counter%64 + 1; 
 //assign y = counter/64 + 1; 
@@ -398,13 +405,13 @@ always@(posedge clk or posedge reset) begin
 	if(reset) begin
 		for(i=0; i<=64; i=i+1) begin
 			H_map[i][0] <= 0;
-			I_map[i][0] <= -8;
-			D_map[i][0] <= -8;
+			I_map[i][0] <= -30;
+			D_map[i][0] <= -30;
 		end
 		for(j=0; j<=48; j=j+1) begin
 			H_map[0][j] <= 0;
-			I_map[0][j] <= -8;
-			D_map[0][j] <= -8;
+			I_map[0][j] <= -30;
+			D_map[0][j] <= -30;
 		end
 	end
 	/*else begin
