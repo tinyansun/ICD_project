@@ -56,12 +56,10 @@ wire[5:0] y;
 //wire signed[3:0] I_map_value;
 //wire signed[3:0] D_map_value;
 reg  signed[4:0] H_map_value;
-=======
 wire signed[6:0] S_map_value;
 wire signed[6:0] I_map_value;
 wire signed[6:0] D_map_value;
 reg  signed[6:0] H_map_value;
->>>>>>> 901e4a7b0ad4942795e32413d618d2fb5452b41f
 
 //assign x = counter%64 + 1; 
 //assign y = counter/64 + 1; 
