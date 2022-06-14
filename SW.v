@@ -51,9 +51,9 @@ reg [WIDTH_POS_QUERY - 1:0]   pos_query_r;
 wire[5:0] x;
 wire[5:0] y;
 
-wire signed[2:0] S_map_value;
-wire signed[3:0] I_map_value;
-wire signed[3:0] D_map_value;
+//wire signed[2:0] S_map_value;
+//wire signed[3:0] I_map_value;
+//wire signed[3:0] D_map_value;
 reg  signed[4:0] H_map_value;
 
 //assign x = counter%64 + 1; 
@@ -70,12 +70,12 @@ always@(*)begin
 				D_map[i][counter+2-i] = H_map[i-1][(counter+2-i)] - open > D_map[i-1][(counter+2-i)] - extend ? H_map[i-1][(counter+2-i)] - open : D_map[i-1][(counter+2-i)] - extend;
 				//H_map
 				if(	H_map[i-1][(counter+2-i)-1] + S_map[i][counter+2-i] >= I_map[i][counter+2-i] && H_map[i-1][(counter+2-i)-1] + S_map[i][counter+2-i] >= D_map[i][counter+2-i] && H_map[i-1][(counter+2-i)-1] + S_map[i][counter+2-i] >= 0)begin
-					H_map[i][counter+2-i] = H_map[x-1][(counter+2-i)-1] + S_map[i][counter+2-i];
+					H_map[i][counter+2-i] = H_map[i-1][(counter+2-i)-1] + S_map[i][counter+2-i];
 				end
-				else if(I_map[i][counter+2-i] >= H_map[x-1][(counter+2-i)-1] + S_map[i][counter+2-i] && I_map[i][counter+2-i] >= D_map[i][counter+2-i] && I_map[i][counter+2-i] >= 0)begin
+				else if(I_map[i][counter+2-i] >= H_map[i-1][(counter+2-i)-1] + S_map[i][counter+2-i] && I_map[i][counter+2-i] >= D_map[i][counter+2-i] && I_map[i][counter+2-i] >= 0)begin
 					H_map[i][counter+2-i] = I_map[i][counter+2-i];
 				end
-				else if(D_map[i][counter+2-i] >= H_map[x-1][(counter+2-i)-1] + S_map[i][counter+2-i] && D_map[i][counter+2-i] >= I_map[i][counter+2-i] && D_map[i][counter+2-i] >= 0)begin
+				else if(D_map[i][counter+2-i] >= H_map[i-1][(counter+2-i)-1] + S_map[i][counter+2-i] && D_map[i][counter+2-i] >= I_map[i][counter+2-i] && D_map[i][counter+2-i] >= 0)begin
 					H_map[i][counter+2-i] = D_map[i][counter+2-i];
 				end
 				else begin
@@ -88,6 +88,19 @@ always@(*)begin
 				S_map[counter+2-i][i] = R[counter+2-i] == Q[i] ? match : mismatch;
 				I_map[(counter+2-i)][i] = H_map[(counter+2-i)][i-1] - open > I_map[(counter+2-i)][i-1] - extend ? H_map[(counter+2-i)][i-1] - open : I_map[(counter+2-i)][i-1] - extend;
 				D_map[(counter+2-i)][i] = H_map[(counter+2-i)-1][i] - open > D_map[(counter+2-i)-1][i] - extend ? H_map[(counter+2-i)-1][i] - open : D_map[(counter+2-i)-1][i] - extend;
+				//H_map
+				if(	H_map[(counter+2-i)-1][i-1] + S_map[(counter+2-i)][i] >= I_map[(counter+2-i)][i] && H_map[(counter+2-i)-1][i-1] + S_map[(counter+2-i)][i] >= D_map[(counter+2-i)][i] && H_map[(counter+2-i)-1][i-1] + S_map[(counter+2-i)][i] >= 0)begin
+					H_map[(counter+2-i)][i] = H_map[(counter+2-i)-1][i-1] + S_map[(counter+2-i)][i];
+				end
+				else if(I_map[(counter+2-i)][i] >= H_map[(counter+2-i)-1][i-1] + S_map[(counter+2-i)][i] && I_map[(counter+2-i)][i] >= D_map[(counter+2-i)][i] && I_map[(counter+2-i)][i] >= 0)begin
+					H_map[(counter+2-i)][i] = I_map[(counter+2-i)][i];
+				end
+				else if(D_map[(counter+2-i)][i] >= H_map[(counter+2-i)-1][i-1] + S_map[(counter+2-i)][i] && D_map[(counter+2-i)][i] >= I_map[(counter+2-i)][i] && D_map[(counter+2-i)][i] >= 0)begin
+					H_map[(counter+2-i)][i] = D_map[(counter+2-i)][i];
+				end
+				else begin
+					H_map[(counter+2-i)][i] = 0;
+				end
 			end
 		end
 		else if(64 <= counter <= 79)begin
@@ -134,6 +147,223 @@ always@(*)begin
 				S_map[i][counter-94-i] = R[i] == Q[counter-94-i] ? match : mismatch;
 				I_map[i][counter-94-i] = H_map[i][(counter-94-i)-1] - open > I_map[i][(counter-94-i)-1] - extend ? H_map[i][(counter-94-i)-1] - open : I_map[i][(counter-94-i)-1] - extend;
 				D_map[i][counter-94-i] = H_map[i-1][(counter-94-i)] - open > D_map[i-1][(counter-94-i)] - extend ? H_map[i-1][(counter-94-i)] - open : D_map[i-1][(counter-94-i)] - extend;
+			end
+		end
+	end
+end
+
+//compare
+always@(*)begin
+	if(ns == CAL)begin
+		//cycle1 -> counter = 0, cycle2 -> counter = 1.....
+		if(counter <= 15)begin
+			for(i=1; i<counter+2; i=i+1)begin
+				//H_map
+				if(	H_map[i-1][(counter+2-i)-1] + S_map[i][counter+2-i] >= I_map[i][counter+2-i] && H_map[i-1][(counter+2-i)-1] + S_map[i][counter+2-i] >= D_map[i][counter+2-i] && H_map[i-1][(counter+2-i)-1] + S_map[i][counter+2-i] >= 0)begin
+					H_map[i][counter+2-i] = H_map[i-1][(counter+2-i)-1] + S_map[i][counter+2-i];
+				end
+				else if(I_map[i][counter+2-i] >= H_map[i-1][(counter+2-i)-1] + S_map[i][counter+2-i] && I_map[i][counter+2-i] >= D_map[i][counter+2-i] && I_map[i][counter+2-i] >= 0)begin
+					H_map[i][counter+2-i] = I_map[i][counter+2-i];
+				end
+				else if(D_map[i][counter+2-i] >= H_map[i-1][(counter+2-i)-1] + S_map[i][counter+2-i] && D_map[i][counter+2-i] >= I_map[i][counter+2-i] && D_map[i][counter+2-i] >= 0)begin
+					H_map[i][counter+2-i] = D_map[i][counter+2-i];
+				end
+				else begin
+					H_map[i][counter+2-i] = 0;
+				end
+			end
+		end
+		else if(16 <= counter <= 63)begin
+			//(17,1)
+			if(H_map[(counter+2-1)][1]>H_map[counter+2-2][2]&&H_map[(counter+2-1)][1]>H_map[(counter+2-3][3]&&H_map[(counter+2-1)][1]>H_map[counter+2-4][4]&&
+				H_map[(counter+2-1)][1]>H_map[counter+2-5][5]&&H_map[(counter+2-1)][1]>H_map[counter+2-6][6]&&H_map[(counter+2-1)][1]>H_map[counter+2-7][7]&&
+				H_map[(counter+2-1)][1]>H_map[counter+2-8][8]&&H_map[(counter+2-1)][1]>H_map[counter+2-9][9]&&H_map[(counter+2-1)][1]>H_map[counter+2-10][10]&&
+				H_map[(counter+2-1)][1]>H_map[counter+2-11][11]&&H_map[(counter+2-1)][1]>H_map[counter+2-12][12]&&H_map[(counter+2-1)][1]>H_map[counter+2-13][13]&&
+				H_map[(counter+2-1)][1]>H_map[counter+2-14][14]&&H_map[(counter+2-1)][1]>H_map[counter+2-15][15]&&H_map[(counter+2-1)][1]>H_map[counter+2-16][16])begin
+					H_map_value = H_map[(counter+2-1)][1];
+					x = (counter+2-1);
+					y = 1;
+			end
+			//(16,2)
+			else if(H_map[(counter+2-2)][2]>H_map[counter+2-1][1]&&H_map[(counter+2-2)][2]>H_map[(counter+2-3][3]&&H_map[(counter+2-2)][2]>H_map[counter+2-4][4]&&
+				H_map[(counter+2-2)][2]>H_map[counter+2-5][5]&&H_map[(counter+2-2)][2]>H_map[counter+2-6][6]&&H_map[(counter+2-2)][2]>H_map[counter+2-7][7]&&
+				H_map[(counter+2-2)][2]>H_map[counter+2-8][8]&&H_map[(counter+2-2)][2]>H_map[counter+2-9][9]&&H_map[(counter+2-2)][2]>H_map[counter+2-10][10]&&
+				H_map[(counter+2-2)][2]>H_map[counter+2-11][11]&&H_map[(counter+2-2)][2]>H_map[counter+2-12][12]&&H_map[(counter+2-2)][2]>H_map[counter+2-13][13]&&
+				H_map[(counter+2-2)][2]>H_map[counter+2-14][14]&&H_map[(counter+2-2)][2]>H_map[counter+2-15][15]&&H_map[(counter+2-2)][2]>H_map[counter+2-16][16])begin
+					H_map_value = H_map[(counter+2-2)][2];
+					x = (counter+2-2);
+					y = 2;
+			end
+			//(15,3)
+			else if(H_map[(counter+2-3)][3]>H_map[counter+2-1][1]&&H_map[(counter+2-3)][3]>H_map[(counter+2-2][2]&&H_map[(counter+2-3)][3]>H_map[counter+2-4][4]&&
+				H_map[(counter+2-3)][3]>H_map[counter+2-5][5]&&H_map[(counter+2-3)][3]>H_map[counter+2-6][6]&&H_map[(counter+2-3)][3]>H_map[counter+2-7][7]&&
+				H_map[(counter+2-3)][3]>H_map[counter+2-8][8]&&H_map[(counter+2-3)][3]>H_map[counter+2-9][9]&&H_map[(counter+2-3)][3]>H_map[counter+2-10][10]&&
+				H_map[(counter+2-3)][3]>H_map[counter+2-11][11]&&H_map[(counter+2-3)][3]>H_map[counter+2-12][12]&&H_map[(counter+2-3)][3]>H_map[counter+2-13][13]&&
+				H_map[(counter+2-3)][3]>H_map[counter+2-14][14]&&H_map[(counter+2-3)][3]>H_map[counter+2-15][15]&&H_map[(counter+2-3)][3]>H_map[counter+2-16][16])begin
+					H_map_value = H_map[(counter+2-3)][3];
+					x = (counter+2-3);
+					y = 3;
+			end
+			//(14,4)
+			else if(H_map[(counter+2-4)][4]>H_map[counter+2-1][1]&&H_map[(counter+2-4)][4]>H_map[(counter+2-2][2]&&H_map[(counter+2-4)][4]>H_map[counter+2-3][3]&&
+				H_map[(counter+2-4)][4]>H_map[counter+2-5][5]&&H_map[(counter+2-4)][4]>H_map[counter+2-6][6]&&H_map[(counter+2-4)][4]>H_map[counter+2-7][7]&&
+				H_map[(counter+2-4)][4]>H_map[counter+2-8][8]&&H_map[(counter+2-4)][4]>H_map[counter+2-9][9]&&H_map[(counter+2-4)][4]>H_map[counter+2-10][10]&&
+				H_map[(counter+2-4)][4]>H_map[counter+2-11][11]&&H_map[(counter+2-4)][4]>H_map[counter+2-12][12]&&H_map[(counter+2-4)][4]>H_map[counter+2-13][13]&&
+				H_map[(counter+2-4)][4]>H_map[counter+2-14][14]&&H_map[(counter+2-4)][4]>H_map[counter+2-15][15]&&H_map[(counter+2-4)][4]>H_map[counter+2-16][16])begin
+					H_map_value = H_map[(counter+2-4)][4];
+					x = (counter+2-4);
+					y = 4;
+			end
+			//(13,5)
+			else if(H_map[(counter+2-5)][5]>H_map[counter+2-1][1]&&H_map[(counter+2-5)][5]>H_map[(counter+2-2][2]&&H_map[(counter+2-5)][5]>H_map[counter+2-3][3]&&
+				H_map[(counter+2-5)][5]>H_map[counter+2-4][4]&&H_map[(counter+2-5)][5]>H_map[counter+2-6][6]&&H_map[(counter+2-5)][5]>H_map[counter+2-7][7]&&
+				H_map[(counter+2-5)][5]>H_map[counter+2-8][8]&&H_map[(counter+2-5)][5]>H_map[counter+2-9][9]&&H_map[(counter+2-5)][5]>H_map[counter+2-10][10]&&
+				H_map[(counter+2-5)][5]>H_map[counter+2-11][11]&&H_map[(counter+2-5)][5]>H_map[counter+2-12][12]&&H_map[(counter+2-5)][5]>H_map[counter+2-13][13]&&
+				H_map[(counter+2-5)][5]>H_map[counter+2-14][14]&&H_map[(counter+2-5)][5]>H_map[counter+2-15][15]&&H_map[(counter+2-5)][5]>H_map[counter+2-16][16])begin
+					H_map_value = H_map[(counter+2-5)][5];
+					x = (counter+2-5);
+					y = 5;
+			end
+			//(12,6)
+			else if(H_map[(counter+2-6)][6]>H_map[counter+2-1][1]&&H_map[(counter+2-6)][6]>H_map[(counter+2-2][2]&&H_map[(counter+2-6)][6]>H_map[counter+2-3][3]&&
+				H_map[(counter+2-6)][6]>H_map[counter+2-4][4]&&H_map[(counter+2-6)][6]>H_map[counter+2-5][5]&&H_map[(counter+2-6)][6]>H_map[counter+2-7][7]&&
+				H_map[(counter+2-6)][6]>H_map[counter+2-8][8]&&H_map[(counter+2-6)][6]>H_map[counter+2-9][9]&&H_map[(counter+2-6)][6]>H_map[counter+2-10][10]&&
+				H_map[(counter+2-6)][6]>H_map[counter+2-11][11]&&H_map[(counter+2-6)][6]>H_map[counter+2-12][12]&&H_map[(counter+2-6)][6]>H_map[counter+2-13][13]&&
+				H_map[(counter+2-6)][6]>H_map[counter+2-14][14]&&H_map[(counter+2-6)][6]>H_map[counter+2-15][15]&&H_map[(counter+2-6)][6]>H_map[counter+2-16][16])begin
+					H_map_value = H_map[(counter+2-6)][6];
+					x = (counter+2-6);
+					y = 6;
+			end
+			//(11,7)
+			else if(H_map[(counter+2-7)][7]>H_map[counter+2-1][1]&&H_map[(counter+2-7)][7]>H_map[(counter+2-2][2]&&H_map[(counter+2-7)][7]>H_map[counter+2-3][3]&&
+				H_map[(counter+2-7)][7]>H_map[counter+2-4][4]&&H_map[(counter+2-7)][7]>H_map[counter+2-5][5]&&H_map[(counter+2-7)][7]>H_map[counter+2-6][6]&&
+				H_map[(counter+2-7)][7]>H_map[counter+2-8][8]&&H_map[(counter+2-7)][7]>H_map[counter+2-9][9]&&H_map[(counter+2-7)][7]>H_map[counter+2-10][10]&&
+				H_map[(counter+2-7)][7]>H_map[counter+2-11][11]&&H_map[(counter+2-7)][7]>H_map[counter+2-12][12]&&H_map[(counter+2-7)][7]>H_map[counter+2-13][13]&&
+				H_map[(counter+2-7)][7]>H_map[counter+2-14][14]&&H_map[(counter+2-7)][7]>H_map[counter+2-15][15]&&H_map[(counter+2-7)][7]>H_map[counter+2-16][16])begin
+					H_map_value = H_map[(counter+2-7)][7];
+					x = (counter+2-7);
+					y = 7;
+			end
+			//(10,8)
+			else if(H_map[(counter+2-8)][8]>H_map[counter+2-1][1]&&H_map[(counter+2-8)][8]>H_map[(counter+2-2][2]&&H_map[(counter+2-8)][8]>H_map[counter+2-3][3]&&
+				H_map[(counter+2-8)][8]>H_map[counter+2-4][4]&&H_map[(counter+2-8)][8]>H_map[counter+2-5][5]&&H_map[(counter+2-8)][8]>H_map[counter+2-6][6]&&
+				H_map[(counter+2-8)][8]>H_map[counter+2-7][7]&&H_map[(counter+2-8)][8]>H_map[counter+2-9][9]&&H_map[(counter+2-8)][8]>H_map[counter+2-10][10]&&
+				H_map[(counter+2-8)][8]>H_map[counter+2-11][11]&&H_map[(counter+2-8)][8]>H_map[counter+2-12][12]&&H_map[(counter+2-8)][8]>H_map[counter+2-13][13]&&
+				H_map[(counter+2-8)][8]>H_map[counter+2-14][14]&&H_map[(counter+2-8)][8]>H_map[counter+2-15][15]&&H_map[(counter+2-8)][8]>H_map[counter+2-16][16])begin
+					H_map_value = H_map[(counter+2-8)][8];
+					x = (counter+2-8);
+					y = 8;
+			end
+			//(9,9)
+			else if(H_map[(counter+2-9)][9]>H_map[counter+2-1][1]&&H_map[(counter+2-9)][9]>H_map[(counter+2-2][2]&&H_map[(counter+2-9)][9]>H_map[counter+2-3][3]&&
+				H_map[(counter+2-9)][9]>H_map[counter+2-4][4]&&H_map[(counter+2-9)][9]>H_map[counter+2-5][5]&&H_map[(counter+2-9)][9]>H_map[counter+2-6][6]&&
+				H_map[(counter+2-9)][9]>H_map[counter+2-7][7]&&H_map[(counter+2-9)][9]>H_map[counter+2-8][8]&&H_map[(counter+2-9)][9]>H_map[counter+2-10][10]&&
+				H_map[(counter+2-9)][9]>H_map[counter+2-11][11]&&H_map[(counter+2-9)][9]>H_map[counter+2-12][12]&&H_map[(counter+2-9)][9]>H_map[counter+2-13][13]&&
+				H_map[(counter+2-9)][9]>H_map[counter+2-14][14]&&H_map[(counter+2-9)][9]>H_map[counter+2-15][15]&&H_map[(counter+2-9)][9]>H_map[counter+2-16][16])begin
+					H_map_value = H_map[(counter+2-9)][9];
+					x = (counter+2-9);
+					y = 9;
+			end
+			//(8,10)
+			else if(H_map[(counter+2-10)][10]>H_map[counter+2-1][1]&&H_map[(counter+2-10)][10]>H_map[(counter+2-2][2]&&H_map[(counter+2-10)][10]>H_map[counter+2-3][3]&&
+				H_map[(counter+2-10)][10]>H_map[counter+2-4][4]&&H_map[(counter+2-10)][10]>H_map[counter+2-5][5]&&H_map[(counter+2-10)][10]>H_map[counter+2-6][6]&&
+				H_map[(counter+2-10)][10]>H_map[counter+2-7][7]&&H_map[(counter+2-10)][10]>H_map[counter+2-8][8]&&H_map[(counter+2-10)][10]>H_map[counter+2-9][9]&&
+				H_map[(counter+2-10)][10]>H_map[counter+2-11][11]&&H_map[(counter+2-10)][10]>H_map[counter+2-12][12]&&H_map[(counter+2-10)][10]>H_map[counter+2-13][13]&&
+				H_map[(counter+2-10)][10]>H_map[counter+2-14][14]&&H_map[(counter+2-10)][10]>H_map[counter+2-15][15]&&H_map[(counter+2-10)][10]>H_map[counter+2-16][16])begin
+					H_map_value = H_map[(counter+2-10)][10];
+					x = (counter+2-10);
+					y = 10;
+			end
+			//(7,11)
+			else if(H_map[(counter+2-11)][11]>H_map[counter+2-1][1]&&H_map[(counter+2-11)][11]>H_map[(counter+2-2][2]&&H_map[(counter+2-11)][11]>H_map[counter+2-3][3]&&
+				H_map[(counter+2-11)][11]>H_map[counter+2-4][4]&&H_map[(counter+2-11)][11]>H_map[counter+2-5][5]&&H_map[(counter+2-11)][11]>H_map[counter+2-6][6]&&
+				H_map[(counter+2-11)][11]>H_map[counter+2-7][7]&&H_map[(counter+2-11)][11]>H_map[counter+2-8][8]&&H_map[(counter+2-11)][11]>H_map[counter+2-9][9]&&
+				H_map[(counter+2-11)][11]>H_map[counter+2-10][10]&&H_map[(counter+2-11)][11]>H_map[counter+2-12][12]&&H_map[(counter+2-11)][11]>H_map[counter+2-13][13]&&
+				H_map[(counter+2-11)][11]>H_map[counter+2-14][14]&&H_map[(counter+2-11)][11]>H_map[counter+2-15][15]&&H_map[(counter+2-11)][11]>H_map[counter+2-16][16])begin
+					H_map_value = H_map[(counter+2-11)][11];
+					x = (counter+2-11);
+					y = 11;
+			end
+			//(6,12)
+			else if(H_map[(counter+2-12)][12]>H_map[counter+2-1][1]&&H_map[(counter+2-12)][12]>H_map[(counter+2-2][2]&&H_map[(counter+2-12)][12]>H_map[counter+2-3][3]&&
+				H_map[(counter+2-12)][12]>H_map[counter+2-4][4]&&H_map[(counter+2-12)][12]>H_map[counter+2-5][5]&&H_map[(counter+2-12)][12]>H_map[counter+2-6][6]&&
+				H_map[(counter+2-12)][12]>H_map[counter+2-7][7]&&H_map[(counter+2-12)][12]>H_map[counter+2-8][8]&&H_map[(counter+2-12)][12]>H_map[counter+2-9][9]&&
+				H_map[(counter+2-12)][12]>H_map[counter+2-10][10]&&H_map[(counter+2-12)][12]>H_map[counter+2-11][11]&&H_map[(counter+2-12)][12]>H_map[counter+2-13][13]&&
+				H_map[(counter+2-12)][12]>H_map[counter+2-14][14]&&H_map[(counter+2-12)][12]>H_map[counter+2-15][15]&&H_map[(counter+2-12)][12]>H_map[counter+2-16][16])begin
+					H_map_value = H_map[(counter+2-12)][12];
+					x = (counter+2-12);
+					y = 12;
+			end
+			//(5,13)
+			else if(H_map[(counter+2-13)][13]>H_map[counter+2-1][1]&&H_map[(counter+2-13)][13]>H_map[(counter+2-2][2]&&H_map[(counter+2-13)][13]>H_map[counter+2-3][3]&&
+				H_map[(counter+2-13)][13]>H_map[counter+2-4][4]&&H_map[(counter+2-13)][13]>H_map[counter+2-5][5]&&H_map[(counter+2-13)][13]>H_map[counter+2-6][6]&&
+				H_map[(counter+2-13)][13]>H_map[counter+2-7][7]&&H_map[(counter+2-13)][13]>H_map[counter+2-8][8]&&H_map[(counter+2-13)][13]>H_map[counter+2-9][9]&&
+				H_map[(counter+2-13)][13]>H_map[counter+2-10][10]&&H_map[(counter+2-13)][13]>H_map[counter+2-11][11]&&H_map[(counter+2-13)][13]>H_map[counter+2-12][12]&&
+				H_map[(counter+2-13)][13]>H_map[counter+2-14][14]&&H_map[(counter+2-13)][13]>H_map[counter+2-15][15]&&H_map[(counter+2-13)][13]>H_map[counter+2-16][16])begin
+					H_map_value = H_map[(counter+2-13)][13];
+					x = (counter+2-13);
+					y = 13;
+			end
+			//(4,14)
+			else if(H_map[(counter+2-14)][14]>H_map[counter+2-1][1]&&H_map[(counter+2-14)][14]>H_map[(counter+2-2][2]&&H_map[(counter+2-14)][14]>H_map[counter+2-3][3]&&
+				H_map[(counter+2-14)][14]>H_map[counter+2-4][4]&&H_map[(counter+2-14)][14]>H_map[counter+2-5][5]&&H_map[(counter+2-14)][14]>H_map[counter+2-6][6]&&
+				H_map[(counter+2-14)][14]>H_map[counter+2-7][7]&&H_map[(counter+2-14)][14]>H_map[counter+2-8][8]&&H_map[(counter+2-14)][14]>H_map[counter+2-9][9]&&
+				H_map[(counter+2-14)][14]>H_map[counter+2-10][10]&&H_map[(counter+2-14)][14]>H_map[counter+2-11][11]&&H_map[(counter+2-14)][14]>H_map[counter+2-12][12]&&
+				H_map[(counter+2-14)][14]>H_map[counter+2-13][13]&&H_map[(counter+2-14)][14]>H_map[counter+2-15][15]&&H_map[(counter+2-14)][14]>H_map[counter+2-16][16])begin
+					H_map_value = H_map[(counter+2-14)][14];
+					x = (counter+2-14);
+					y = 14;
+			end
+			//(3,15)
+			else if(H_map[(counter+2-15)][15]>H_map[counter+2-1][1]&&H_map[(counter+2-15)][15]>H_map[(counter+2-2][2]&&H_map[(counter+2-15)][15]>H_map[counter+2-3][3]&&
+				H_map[(counter+2-15)][15]>H_map[counter+2-4][4]&&H_map[(counter+2-15)][15]>H_map[counter+2-5][5]&&H_map[(counter+2-15)][15]>H_map[counter+2-6][6]&&
+				H_map[(counter+2-15)][15]>H_map[counter+2-7][7]&&H_map[(counter+2-15)][15]>H_map[counter+2-8][8]&&H_map[(counter+2-15)][15]>H_map[counter+2-9][9]&&
+				H_map[(counter+2-15)][15]>H_map[counter+2-10][10]&&H_map[(counter+2-15)][15]>H_map[counter+2-11][11]&&H_map[(counter+2-15)][15]>H_map[counter+2-12][12]&&
+				H_map[(counter+2-15)][15]>H_map[counter+2-13][13]&&H_map[(counter+2-15)][15]>H_map[counter+2-14][14]&&H_map[(counter+2-15)][15]>H_map[counter+2-16][16])begin
+					H_map_value = H_map[(counter+2-15)][15];
+					x = (counter+2-15);
+					y = 15;
+			end
+			//(2,16)
+			else if(H_map[(counter+2-16)][16]>H_map[counter+2-1][1]&&H_map[(counter+2-16)][16]>H_map[(counter+2-2][2]&&H_map[(counter+2-16)][16]>H_map[counter+2-3][3]&&
+				H_map[(counter+2-16)][16]>H_map[counter+2-4][4]&&H_map[(counter+2-16)][16]>H_map[counter+2-5][5]&&H_map[(counter+2-16)][16]>H_map[counter+2-6][6]&&
+				H_map[(counter+2-16)][16]>H_map[counter+2-7][7]&&H_map[(counter+2-16)][16]>H_map[counter+2-8][8]&&H_map[(counter+2-16)][16]>H_map[counter+2-9][9]&&
+				H_map[(counter+2-16)][16]>H_map[counter+2-10][10]&&H_map[(counter+2-16)][16]>H_map[counter+2-11][11]&&H_map[(counter+2-16)][16]>H_map[counter+2-12][12]&&
+				H_map[(counter+2-16)][16]>H_map[counter+2-13][13]&&H_map[(counter+2-16)][16]>H_map[counter+2-14][14]&&H_map[(counter+2-16)][16]>H_map[counter+2-15][15])begin
+					H_map_value = H_map[(counter+2-16)][16];
+					x = (counter+2-16);
+					y = 16;
+			end
+		end
+		else if(64 <= counter <= 79)begin
+			for(i=1; i<counter-62; i=i+1)begin
+				
+			end
+			for(i=64; i>counter-15; i=i-1)begin
+				
+			end
+		end
+		else if(80 <= counter <= 127)begin
+			for(i=17; i<=32; i=i+1)begin
+				
+			end
+		end
+		else if(128 <= counter <= 143)begin
+			for(i=1; i<counter-126; i=i+1)begin
+				
+			end
+			
+			for(i=64; i>counter-79; i=i-1)begin
+				
+			end
+		end
+		else if(144 <= counter <= 191)begin
+			for(i=33; i<=48; i=i+1)begin
+				
+			end
+		end
+		else if(192 <= counter <= 206)begin
+			
 			end
 		end
 	end
