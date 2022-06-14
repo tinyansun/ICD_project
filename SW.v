@@ -51,7 +51,6 @@ reg [WIDTH_POS_QUERY - 1:0]   pos_query_r;
 wire[6:0] x;
 wire[5:0] y;
 
-<<<<<<< HEAD
 //wire signed[2:0] S_map_value;
 //wire signed[3:0] I_map_value;
 //wire signed[3:0] D_map_value;
@@ -180,7 +179,7 @@ always@(*)begin
 		end
 		else if(16 <= counter <= 63)begin
 			//(17,1)
-			if(H_map[(counter+2-1)][1]>H_map[counter+2-2][2]&&H_map[(counter+2-1)][1]>H_map[(counter+2-3][3]&&H_map[(counter+2-1)][1]>H_map[counter+2-4][4]&&
+			if( H_map[(counter+2-1)][1]>H_map[counter+2-2][2]&&H_map[(counter+2-1)][1]>H_map[counter+2-3][3]&&H_map[(counter+2-1)][1]>H_map[counter+2-4][4]&&
 				H_map[(counter+2-1)][1]>H_map[counter+2-5][5]&&H_map[(counter+2-1)][1]>H_map[counter+2-6][6]&&H_map[(counter+2-1)][1]>H_map[counter+2-7][7]&&
 				H_map[(counter+2-1)][1]>H_map[counter+2-8][8]&&H_map[(counter+2-1)][1]>H_map[counter+2-9][9]&&H_map[(counter+2-1)][1]>H_map[counter+2-10][10]&&
 				H_map[(counter+2-1)][1]>H_map[counter+2-11][11]&&H_map[(counter+2-1)][1]>H_map[counter+2-12][12]&&H_map[(counter+2-1)][1]>H_map[counter+2-13][13]&&
@@ -190,7 +189,7 @@ always@(*)begin
 					y = 1;
 			end
 			//(16,2)
-			else if(H_map[(counter+2-2)][2]>H_map[counter+2-1][1]&&H_map[(counter+2-2)][2]>H_map[(counter+2-3][3]&&H_map[(counter+2-2)][2]>H_map[counter+2-4][4]&&
+			else if(H_map[(counter+2-2)][2]>H_map[counter+2-1][1]&&H_map[(counter+2-2)][2]>H_map[counter+2-3][3]&&H_map[(counter+2-2)][2]>H_map[counter+2-4][4]&&
 				H_map[(counter+2-2)][2]>H_map[counter+2-5][5]&&H_map[(counter+2-2)][2]>H_map[counter+2-6][6]&&H_map[(counter+2-2)][2]>H_map[counter+2-7][7]&&
 				H_map[(counter+2-2)][2]>H_map[counter+2-8][8]&&H_map[(counter+2-2)][2]>H_map[counter+2-9][9]&&H_map[(counter+2-2)][2]>H_map[counter+2-10][10]&&
 				H_map[(counter+2-2)][2]>H_map[counter+2-11][11]&&H_map[(counter+2-2)][2]>H_map[counter+2-12][12]&&H_map[(counter+2-2)][2]>H_map[counter+2-13][13]&&
@@ -200,7 +199,7 @@ always@(*)begin
 					y = 2;
 			end
 			//(15,3)
-			else if(H_map[(counter+2-3)][3]>H_map[counter+2-1][1]&&H_map[(counter+2-3)][3]>H_map[(counter+2-2][2]&&H_map[(counter+2-3)][3]>H_map[counter+2-4][4]&&
+			else if(H_map[(counter+2-3)][3]>H_map[counter+2-1][1]&&H_map[(counter+2-3)][3]>H_map[counter+2-2][2]&&H_map[(counter+2-3)][3]>H_map[counter+2-4][4]&&
 				H_map[(counter+2-3)][3]>H_map[counter+2-5][5]&&H_map[(counter+2-3)][3]>H_map[counter+2-6][6]&&H_map[(counter+2-3)][3]>H_map[counter+2-7][7]&&
 				H_map[(counter+2-3)][3]>H_map[counter+2-8][8]&&H_map[(counter+2-3)][3]>H_map[counter+2-9][9]&&H_map[(counter+2-3)][3]>H_map[counter+2-10][10]&&
 				H_map[(counter+2-3)][3]>H_map[counter+2-11][11]&&H_map[(counter+2-3)][3]>H_map[counter+2-12][12]&&H_map[(counter+2-3)][3]>H_map[counter+2-13][13]&&
@@ -210,7 +209,7 @@ always@(*)begin
 					y = 3;
 			end
 			//(14,4)
-			else if(H_map[(counter+2-4)][4]>H_map[counter+2-1][1]&&H_map[(counter+2-4)][4]>H_map[(counter+2-2][2]&&H_map[(counter+2-4)][4]>H_map[counter+2-3][3]&&
+			else if(H_map[(counter+2-4)][4]>H_map[counter+2-1][1]&&H_map[(counter+2-4)][4]>H_map[counter+2-2][2]&&H_map[(counter+2-4)][4]>H_map[counter+2-3][3]&&
 				H_map[(counter+2-4)][4]>H_map[counter+2-5][5]&&H_map[(counter+2-4)][4]>H_map[counter+2-6][6]&&H_map[(counter+2-4)][4]>H_map[counter+2-7][7]&&
 				H_map[(counter+2-4)][4]>H_map[counter+2-8][8]&&H_map[(counter+2-4)][4]>H_map[counter+2-9][9]&&H_map[(counter+2-4)][4]>H_map[counter+2-10][10]&&
 				H_map[(counter+2-4)][4]>H_map[counter+2-11][11]&&H_map[(counter+2-4)][4]>H_map[counter+2-12][12]&&H_map[(counter+2-4)][4]>H_map[counter+2-13][13]&&
@@ -220,7 +219,7 @@ always@(*)begin
 					y = 4;
 			end
 			//(13,5)
-			else if(H_map[(counter+2-5)][5]>H_map[counter+2-1][1]&&H_map[(counter+2-5)][5]>H_map[(counter+2-2][2]&&H_map[(counter+2-5)][5]>H_map[counter+2-3][3]&&
+			else if(H_map[(counter+2-5)][5]>H_map[counter+2-1][1]&&H_map[(counter+2-5)][5]>H_map[counter+2-2][2]&&H_map[(counter+2-5)][5]>H_map[counter+2-3][3]&&
 				H_map[(counter+2-5)][5]>H_map[counter+2-4][4]&&H_map[(counter+2-5)][5]>H_map[counter+2-6][6]&&H_map[(counter+2-5)][5]>H_map[counter+2-7][7]&&
 				H_map[(counter+2-5)][5]>H_map[counter+2-8][8]&&H_map[(counter+2-5)][5]>H_map[counter+2-9][9]&&H_map[(counter+2-5)][5]>H_map[counter+2-10][10]&&
 				H_map[(counter+2-5)][5]>H_map[counter+2-11][11]&&H_map[(counter+2-5)][5]>H_map[counter+2-12][12]&&H_map[(counter+2-5)][5]>H_map[counter+2-13][13]&&
@@ -230,7 +229,7 @@ always@(*)begin
 					y = 5;
 			end
 			//(12,6)
-			else if(H_map[(counter+2-6)][6]>H_map[counter+2-1][1]&&H_map[(counter+2-6)][6]>H_map[(counter+2-2][2]&&H_map[(counter+2-6)][6]>H_map[counter+2-3][3]&&
+			else if(H_map[(counter+2-6)][6]>H_map[counter+2-1][1]&&H_map[(counter+2-6)][6]>H_map[counter+2-2][2]&&H_map[(counter+2-6)][6]>H_map[counter+2-3][3]&&
 				H_map[(counter+2-6)][6]>H_map[counter+2-4][4]&&H_map[(counter+2-6)][6]>H_map[counter+2-5][5]&&H_map[(counter+2-6)][6]>H_map[counter+2-7][7]&&
 				H_map[(counter+2-6)][6]>H_map[counter+2-8][8]&&H_map[(counter+2-6)][6]>H_map[counter+2-9][9]&&H_map[(counter+2-6)][6]>H_map[counter+2-10][10]&&
 				H_map[(counter+2-6)][6]>H_map[counter+2-11][11]&&H_map[(counter+2-6)][6]>H_map[counter+2-12][12]&&H_map[(counter+2-6)][6]>H_map[counter+2-13][13]&&
@@ -240,7 +239,7 @@ always@(*)begin
 					y = 6;
 			end
 			//(11,7)
-			else if(H_map[(counter+2-7)][7]>H_map[counter+2-1][1]&&H_map[(counter+2-7)][7]>H_map[(counter+2-2][2]&&H_map[(counter+2-7)][7]>H_map[counter+2-3][3]&&
+			else if(H_map[(counter+2-7)][7]>H_map[counter+2-1][1]&&H_map[(counter+2-7)][7]>H_map[counter+2-2][2]&&H_map[(counter+2-7)][7]>H_map[counter+2-3][3]&&
 				H_map[(counter+2-7)][7]>H_map[counter+2-4][4]&&H_map[(counter+2-7)][7]>H_map[counter+2-5][5]&&H_map[(counter+2-7)][7]>H_map[counter+2-6][6]&&
 				H_map[(counter+2-7)][7]>H_map[counter+2-8][8]&&H_map[(counter+2-7)][7]>H_map[counter+2-9][9]&&H_map[(counter+2-7)][7]>H_map[counter+2-10][10]&&
 				H_map[(counter+2-7)][7]>H_map[counter+2-11][11]&&H_map[(counter+2-7)][7]>H_map[counter+2-12][12]&&H_map[(counter+2-7)][7]>H_map[counter+2-13][13]&&
@@ -250,7 +249,7 @@ always@(*)begin
 					y = 7;
 			end
 			//(10,8)
-			else if(H_map[(counter+2-8)][8]>H_map[counter+2-1][1]&&H_map[(counter+2-8)][8]>H_map[(counter+2-2][2]&&H_map[(counter+2-8)][8]>H_map[counter+2-3][3]&&
+			else if(H_map[(counter+2-8)][8]>H_map[counter+2-1][1]&&H_map[(counter+2-8)][8]>H_map[counter+2-2][2]&&H_map[(counter+2-8)][8]>H_map[counter+2-3][3]&&
 				H_map[(counter+2-8)][8]>H_map[counter+2-4][4]&&H_map[(counter+2-8)][8]>H_map[counter+2-5][5]&&H_map[(counter+2-8)][8]>H_map[counter+2-6][6]&&
 				H_map[(counter+2-8)][8]>H_map[counter+2-7][7]&&H_map[(counter+2-8)][8]>H_map[counter+2-9][9]&&H_map[(counter+2-8)][8]>H_map[counter+2-10][10]&&
 				H_map[(counter+2-8)][8]>H_map[counter+2-11][11]&&H_map[(counter+2-8)][8]>H_map[counter+2-12][12]&&H_map[(counter+2-8)][8]>H_map[counter+2-13][13]&&
@@ -260,7 +259,7 @@ always@(*)begin
 					y = 8;
 			end
 			//(9,9)
-			else if(H_map[(counter+2-9)][9]>H_map[counter+2-1][1]&&H_map[(counter+2-9)][9]>H_map[(counter+2-2][2]&&H_map[(counter+2-9)][9]>H_map[counter+2-3][3]&&
+			else if(H_map[(counter+2-9)][9]>H_map[counter+2-1][1]&&H_map[(counter+2-9)][9]>H_map[counter+2-2][2]&&H_map[(counter+2-9)][9]>H_map[counter+2-3][3]&&
 				H_map[(counter+2-9)][9]>H_map[counter+2-4][4]&&H_map[(counter+2-9)][9]>H_map[counter+2-5][5]&&H_map[(counter+2-9)][9]>H_map[counter+2-6][6]&&
 				H_map[(counter+2-9)][9]>H_map[counter+2-7][7]&&H_map[(counter+2-9)][9]>H_map[counter+2-8][8]&&H_map[(counter+2-9)][9]>H_map[counter+2-10][10]&&
 				H_map[(counter+2-9)][9]>H_map[counter+2-11][11]&&H_map[(counter+2-9)][9]>H_map[counter+2-12][12]&&H_map[(counter+2-9)][9]>H_map[counter+2-13][13]&&
@@ -270,7 +269,7 @@ always@(*)begin
 					y = 9;
 			end
 			//(8,10)
-			else if(H_map[(counter+2-10)][10]>H_map[counter+2-1][1]&&H_map[(counter+2-10)][10]>H_map[(counter+2-2][2]&&H_map[(counter+2-10)][10]>H_map[counter+2-3][3]&&
+			else if(H_map[(counter+2-10)][10]>H_map[counter+2-1][1]&&H_map[(counter+2-10)][10]>H_map[counter+2-2][2]&&H_map[(counter+2-10)][10]>H_map[counter+2-3][3]&&
 				H_map[(counter+2-10)][10]>H_map[counter+2-4][4]&&H_map[(counter+2-10)][10]>H_map[counter+2-5][5]&&H_map[(counter+2-10)][10]>H_map[counter+2-6][6]&&
 				H_map[(counter+2-10)][10]>H_map[counter+2-7][7]&&H_map[(counter+2-10)][10]>H_map[counter+2-8][8]&&H_map[(counter+2-10)][10]>H_map[counter+2-9][9]&&
 				H_map[(counter+2-10)][10]>H_map[counter+2-11][11]&&H_map[(counter+2-10)][10]>H_map[counter+2-12][12]&&H_map[(counter+2-10)][10]>H_map[counter+2-13][13]&&
@@ -280,7 +279,7 @@ always@(*)begin
 					y = 10;
 			end
 			//(7,11)
-			else if(H_map[(counter+2-11)][11]>H_map[counter+2-1][1]&&H_map[(counter+2-11)][11]>H_map[(counter+2-2][2]&&H_map[(counter+2-11)][11]>H_map[counter+2-3][3]&&
+			else if(H_map[(counter+2-11)][11]>H_map[counter+2-1][1]&&H_map[(counter+2-11)][11]>H_map[counter+2-2][2]&&H_map[(counter+2-11)][11]>H_map[counter+2-3][3]&&
 				H_map[(counter+2-11)][11]>H_map[counter+2-4][4]&&H_map[(counter+2-11)][11]>H_map[counter+2-5][5]&&H_map[(counter+2-11)][11]>H_map[counter+2-6][6]&&
 				H_map[(counter+2-11)][11]>H_map[counter+2-7][7]&&H_map[(counter+2-11)][11]>H_map[counter+2-8][8]&&H_map[(counter+2-11)][11]>H_map[counter+2-9][9]&&
 				H_map[(counter+2-11)][11]>H_map[counter+2-10][10]&&H_map[(counter+2-11)][11]>H_map[counter+2-12][12]&&H_map[(counter+2-11)][11]>H_map[counter+2-13][13]&&
@@ -290,7 +289,7 @@ always@(*)begin
 					y = 11;
 			end
 			//(6,12)
-			else if(H_map[(counter+2-12)][12]>H_map[counter+2-1][1]&&H_map[(counter+2-12)][12]>H_map[(counter+2-2][2]&&H_map[(counter+2-12)][12]>H_map[counter+2-3][3]&&
+			else if(H_map[(counter+2-12)][12]>H_map[counter+2-1][1]&&H_map[(counter+2-12)][12]>H_map[counter+2-2][2]&&H_map[(counter+2-12)][12]>H_map[counter+2-3][3]&&
 				H_map[(counter+2-12)][12]>H_map[counter+2-4][4]&&H_map[(counter+2-12)][12]>H_map[counter+2-5][5]&&H_map[(counter+2-12)][12]>H_map[counter+2-6][6]&&
 				H_map[(counter+2-12)][12]>H_map[counter+2-7][7]&&H_map[(counter+2-12)][12]>H_map[counter+2-8][8]&&H_map[(counter+2-12)][12]>H_map[counter+2-9][9]&&
 				H_map[(counter+2-12)][12]>H_map[counter+2-10][10]&&H_map[(counter+2-12)][12]>H_map[counter+2-11][11]&&H_map[(counter+2-12)][12]>H_map[counter+2-13][13]&&
@@ -300,7 +299,7 @@ always@(*)begin
 					y = 12;
 			end
 			//(5,13)
-			else if(H_map[(counter+2-13)][13]>H_map[counter+2-1][1]&&H_map[(counter+2-13)][13]>H_map[(counter+2-2][2]&&H_map[(counter+2-13)][13]>H_map[counter+2-3][3]&&
+			else if(H_map[(counter+2-13)][13]>H_map[counter+2-1][1]&&H_map[(counter+2-13)][13]>H_map[counter+2-2][2]&&H_map[(counter+2-13)][13]>H_map[counter+2-3][3]&&
 				H_map[(counter+2-13)][13]>H_map[counter+2-4][4]&&H_map[(counter+2-13)][13]>H_map[counter+2-5][5]&&H_map[(counter+2-13)][13]>H_map[counter+2-6][6]&&
 				H_map[(counter+2-13)][13]>H_map[counter+2-7][7]&&H_map[(counter+2-13)][13]>H_map[counter+2-8][8]&&H_map[(counter+2-13)][13]>H_map[counter+2-9][9]&&
 				H_map[(counter+2-13)][13]>H_map[counter+2-10][10]&&H_map[(counter+2-13)][13]>H_map[counter+2-11][11]&&H_map[(counter+2-13)][13]>H_map[counter+2-12][12]&&
@@ -310,7 +309,7 @@ always@(*)begin
 					y = 13;
 			end
 			//(4,14)
-			else if(H_map[(counter+2-14)][14]>H_map[counter+2-1][1]&&H_map[(counter+2-14)][14]>H_map[(counter+2-2][2]&&H_map[(counter+2-14)][14]>H_map[counter+2-3][3]&&
+			else if(H_map[(counter+2-14)][14]>H_map[counter+2-1][1]&&H_map[(counter+2-14)][14]>H_map[counter+2-2][2]&&H_map[(counter+2-14)][14]>H_map[counter+2-3][3]&&
 				H_map[(counter+2-14)][14]>H_map[counter+2-4][4]&&H_map[(counter+2-14)][14]>H_map[counter+2-5][5]&&H_map[(counter+2-14)][14]>H_map[counter+2-6][6]&&
 				H_map[(counter+2-14)][14]>H_map[counter+2-7][7]&&H_map[(counter+2-14)][14]>H_map[counter+2-8][8]&&H_map[(counter+2-14)][14]>H_map[counter+2-9][9]&&
 				H_map[(counter+2-14)][14]>H_map[counter+2-10][10]&&H_map[(counter+2-14)][14]>H_map[counter+2-11][11]&&H_map[(counter+2-14)][14]>H_map[counter+2-12][12]&&
@@ -320,7 +319,7 @@ always@(*)begin
 					y = 14;
 			end
 			//(3,15)
-			else if(H_map[(counter+2-15)][15]>H_map[counter+2-1][1]&&H_map[(counter+2-15)][15]>H_map[(counter+2-2][2]&&H_map[(counter+2-15)][15]>H_map[counter+2-3][3]&&
+			else if(H_map[(counter+2-15)][15]>H_map[counter+2-1][1]&&H_map[(counter+2-15)][15]>H_map[counter+2-2][2]&&H_map[(counter+2-15)][15]>H_map[counter+2-3][3]&&
 				H_map[(counter+2-15)][15]>H_map[counter+2-4][4]&&H_map[(counter+2-15)][15]>H_map[counter+2-5][5]&&H_map[(counter+2-15)][15]>H_map[counter+2-6][6]&&
 				H_map[(counter+2-15)][15]>H_map[counter+2-7][7]&&H_map[(counter+2-15)][15]>H_map[counter+2-8][8]&&H_map[(counter+2-15)][15]>H_map[counter+2-9][9]&&
 				H_map[(counter+2-15)][15]>H_map[counter+2-10][10]&&H_map[(counter+2-15)][15]>H_map[counter+2-11][11]&&H_map[(counter+2-15)][15]>H_map[counter+2-12][12]&&
@@ -330,7 +329,7 @@ always@(*)begin
 					y = 15;
 			end
 			//(2,16)
-			else if(H_map[(counter+2-16)][16]>H_map[counter+2-1][1]&&H_map[(counter+2-16)][16]>H_map[(counter+2-2][2]&&H_map[(counter+2-16)][16]>H_map[counter+2-3][3]&&
+			else if(H_map[(counter+2-16)][16]>H_map[counter+2-1][1]&&H_map[(counter+2-16)][16]>H_map[counter+2-2][2]&&H_map[(counter+2-16)][16]>H_map[counter+2-3][3]&&
 				H_map[(counter+2-16)][16]>H_map[counter+2-4][4]&&H_map[(counter+2-16)][16]>H_map[counter+2-5][5]&&H_map[(counter+2-16)][16]>H_map[counter+2-6][6]&&
 				H_map[(counter+2-16)][16]>H_map[counter+2-7][7]&&H_map[(counter+2-16)][16]>H_map[counter+2-8][8]&&H_map[(counter+2-16)][16]>H_map[counter+2-9][9]&&
 				H_map[(counter+2-16)][16]>H_map[counter+2-10][10]&&H_map[(counter+2-16)][16]>H_map[counter+2-11][11]&&H_map[(counter+2-16)][16]>H_map[counter+2-12][12]&&
@@ -350,7 +349,7 @@ always@(*)begin
 		end
 		else if(80 <= counter <= 127)begin
 			//(17,17)
-			if(H_map[(counter-46-17)][17]>H_map[counter-46-18][18]&&H_map[(counter-46-17)][17]>H_map[(counter-46-19][19]&&H_map[(counter-46-17)][17]>H_map[counter-46-20][20]&&
+			if(H_map[(counter-46-17)][17]>H_map[counter-46-18][18]&&H_map[(counter-46-17)][17]>H_map[counter-46-19][19]&&H_map[(counter-46-17)][17]>H_map[counter-46-20][20]&&
 				H_map[(counter-46-17)][17]>H_map[counter-46-21][21]&&H_map[(counter-46-17)][17]>H_map[counter-46-22][22]&&H_map[(counter-46-17)][17]>H_map[counter-46-23][23]&&
 				H_map[(counter-46-17)][17]>H_map[counter-46-24][24]&&H_map[(counter-46-17)][17]>H_map[counter-46-25][25]&&H_map[(counter-46-17)][17]>H_map[counter-46-26][26]&&
 				H_map[(counter-46-17)][17]>H_map[counter-46-27][27]&&H_map[(counter-46-17)][17]>H_map[counter-46-28][28]&&H_map[(counter-46-17)][17]>H_map[counter-46-29][29]&&
@@ -360,7 +359,7 @@ always@(*)begin
 					y = 17;
 			end
 			//(16,18)
-			else if(H_map[(counter-46-18)][18]>H_map[counter-46-17][17]&&H_map[(counter-46-18)][18]>H_map[(counter-46-19][19]&&H_map[(counter-46-18)][18]>H_map[counter-46-20][20]&&
+			else if(H_map[(counter-46-18)][18]>H_map[counter-46-17][17]&&H_map[(counter-46-18)][18]>H_map[counter-46-19][19]&&H_map[(counter-46-18)][18]>H_map[counter-46-20][20]&&
 				H_map[(counter-46-18)][18]>H_map[counter-46-21][21]&&H_map[(counter-46-18)][18]>H_map[counter-46-22][22]&&H_map[(counter-46-18)][18]>H_map[counter-46-23][23]&&
 				H_map[(counter-46-18)][18]>H_map[counter-46-24][24]&&H_map[(counter-46-18)][18]>H_map[counter-46-25][25]&&H_map[(counter-46-18)][18]>H_map[counter-46-26][26]&&
 				H_map[(counter-46-18)][18]>H_map[counter-46-27][27]&&H_map[(counter-46-18)][18]>H_map[counter-46-28][28]&&H_map[(counter-46-18)][18]>H_map[counter-46-29][29]&&
@@ -370,7 +369,7 @@ always@(*)begin
 					y = 18;
 			end
 			//(15,19)
-			else if(H_map[(counter-46-19)][19]>H_map[counter-46-17][17]&&H_map[(counter-46-19)][19]>H_map[(counter-46-18][18]&&H_map[(counter-46-19)][19]>H_map[counter-46-20][20]&&
+			else if(H_map[(counter-46-19)][19]>H_map[counter-46-17][17]&&H_map[(counter-46-19)][19]>H_map[counter-46-18][18]&&H_map[(counter-46-19)][19]>H_map[counter-46-20][20]&&
 				H_map[(counter-46-19)][19]>H_map[counter-46-21][21]&&H_map[(counter-46-19)][19]>H_map[counter-46-22][22]&&H_map[(counter-46-19)][19]>H_map[counter-46-23][23]&&
 				H_map[(counter-46-19)][19]>H_map[counter-46-24][24]&&H_map[(counter-46-19)][19]>H_map[counter-46-25][25]&&H_map[(counter-46-19)][19]>H_map[counter-46-26][26]&&
 				H_map[(counter-46-19)][19]>H_map[counter-46-27][27]&&H_map[(counter-46-19)][19]>H_map[counter-46-28][28]&&H_map[(counter-46-19)][19]>H_map[counter-46-29][29]&&
@@ -380,7 +379,7 @@ always@(*)begin
 					y = 19;
 			end
 			//(14,20)
-			else if(H_map[(counter-46-20)][20]>H_map[counter-46-17][17]&&H_map[(counter-46-20)][20]>H_map[(counter-46-18][18]&&H_map[(counter-46-20)][20]>H_map[counter-46-19][19]&&
+			else if(H_map[(counter-46-20)][20]>H_map[counter-46-17][17]&&H_map[(counter-46-20)][20]>H_map[counter-46-18][18]&&H_map[(counter-46-20)][20]>H_map[counter-46-19][19]&&
 				H_map[(counter-46-20)][20]>H_map[counter-46-21][21]&&H_map[(counter-46-20)][20]>H_map[counter-46-22][22]&&H_map[(counter-46-20)][20]>H_map[counter-46-23][23]&&
 				H_map[(counter-46-20)][20]>H_map[counter-46-24][24]&&H_map[(counter-46-20)][20]>H_map[counter-46-25][25]&&H_map[(counter-46-20)][20]>H_map[counter-46-26][26]&&
 				H_map[(counter-46-20)][20]>H_map[counter-46-27][27]&&H_map[(counter-46-20)][20]>H_map[counter-46-28][28]&&H_map[(counter-46-20)][20]>H_map[counter-46-29][29]&&
@@ -390,7 +389,7 @@ always@(*)begin
 					y = 20;
 			end
 			//(13,21)
-			else if(H_map[(counter-46-21)][21]>H_map[counter-46-17][17]&&H_map[(counter-46-21)][21]>H_map[(counter-46-18][18]&&H_map[(counter-46-21)][21]>H_map[counter-46-19][19]&&
+			else if(H_map[(counter-46-21)][21]>H_map[counter-46-17][17]&&H_map[(counter-46-21)][21]>H_map[counter-46-18][18]&&H_map[(counter-46-21)][21]>H_map[counter-46-19][19]&&
 				H_map[(counter-46-21)][21]>H_map[counter-46-20][20]&&H_map[(counter-46-21)][21]>H_map[counter-46-22][22]&&H_map[(counter-46-21)][21]>H_map[counter-46-23][23]&&
 				H_map[(counter-46-21)][21]>H_map[counter-46-24][24]&&H_map[(counter-46-21)][21]>H_map[counter-46-25][25]&&H_map[(counter-46-21)][21]>H_map[counter-46-26][26]&&
 				H_map[(counter-46-21)][21]>H_map[counter-46-27][27]&&H_map[(counter-46-21)][21]>H_map[counter-46-28][28]&&H_map[(counter-46-21)][21]>H_map[counter-46-29][29]&&
@@ -400,7 +399,7 @@ always@(*)begin
 					y = 21;
 			end
 			//(12,22)
-			else if(H_map[(counter-46-22)][22]>H_map[counter-46-17][17]&&H_map[(counter-46-22)][22]>H_map[(counter-46-18][18]&&H_map[(counter-46-22)][22]>H_map[counter-46-19][19]&&
+			else if(H_map[(counter-46-22)][22]>H_map[counter-46-17][17]&&H_map[(counter-46-22)][22]>H_map[counter-46-18][18]&&H_map[(counter-46-22)][22]>H_map[counter-46-19][19]&&
 				H_map[(counter-46-22)][22]>H_map[counter-46-20][20]&&H_map[(counter-46-22)][22]>H_map[counter-46-21][21]&&H_map[(counter-46-22)][22]>H_map[counter-46-23][23]&&
 				H_map[(counter-46-22)][22]>H_map[counter-46-24][24]&&H_map[(counter-46-22)][22]>H_map[counter-46-25][25]&&H_map[(counter-46-22)][22]>H_map[counter-46-26][26]&&
 				H_map[(counter-46-22)][22]>H_map[counter-46-27][27]&&H_map[(counter-46-22)][22]>H_map[counter-46-28][28]&&H_map[(counter-46-22)][22]>H_map[counter-46-29][29]&&
@@ -410,7 +409,7 @@ always@(*)begin
 					y = 22;
 			end
 			//(11,23)
-			else if(H_map[(counter-46-23)][23]>H_map[counter-46-17][17]&&H_map[(counter-46-23)][23]>H_map[(counter-46-18][18]&&H_map[(counter-46-23)][23]>H_map[counter-46-19][19]&&
+			else if(H_map[(counter-46-23)][23]>H_map[counter-46-17][17]&&H_map[(counter-46-23)][23]>H_map[counter-46-18][18]&&H_map[(counter-46-23)][23]>H_map[counter-46-19][19]&&
 				H_map[(counter-46-23)][23]>H_map[counter-46-20][20]&&H_map[(counter-46-23)][23]>H_map[counter-46-21][21]&&H_map[(counter-46-23)][23]>H_map[counter-46-22][22]&&
 				H_map[(counter-46-23)][23]>H_map[counter-46-24][24]&&H_map[(counter-46-23)][23]>H_map[counter-46-25][25]&&H_map[(counter-46-23)][23]>H_map[counter-46-26][26]&&
 				H_map[(counter-46-23)][23]>H_map[counter-46-27][27]&&H_map[(counter-46-23)][23]>H_map[counter-46-28][28]&&H_map[(counter-46-23)][23]>H_map[counter-46-29][29]&&
@@ -420,7 +419,7 @@ always@(*)begin
 					y = 23;
 			end
 			//(10,24)
-			else if(H_map[(counter-46-24)][24]>H_map[counter-46-17][17]&&H_map[(counter-46-24)][24]>H_map[(counter-46-18][18]&&H_map[(counter-46-24)][24]>H_map[counter-46-19][19]&&
+			else if(H_map[(counter-46-24)][24]>H_map[counter-46-17][17]&&H_map[(counter-46-24)][24]>H_map[counter-46-18][18]&&H_map[(counter-46-24)][24]>H_map[counter-46-19][19]&&
 				H_map[(counter-46-24)][24]>H_map[counter-46-20][20]&&H_map[(counter-46-24)][24]>H_map[counter-46-21][21]&&H_map[(counter-46-24)][24]>H_map[counter-46-22][22]&&
 				H_map[(counter-46-24)][24]>H_map[counter-46-23][23]&&H_map[(counter-46-24)][24]>H_map[counter-46-25][25]&&H_map[(counter-46-24)][24]>H_map[counter-46-26][26]&&
 				H_map[(counter-46-24)][24]>H_map[counter-46-27][27]&&H_map[(counter-46-24)][24]>H_map[counter-46-28][28]&&H_map[(counter-46-24)][24]>H_map[counter-46-29][29]&&
@@ -430,7 +429,7 @@ always@(*)begin
 					y = 24;
 			end
 			//(9,25)
-			else if(H_map[(counter-46-25)][25]>H_map[counter-46-17][17]&&H_map[(counter-46-25)][25]>H_map[(counter-46-18][18]&&H_map[(counter-46-25)][25]>H_map[counter-46-19][19]&&
+			else if(H_map[(counter-46-25)][25]>H_map[counter-46-17][17]&&H_map[(counter-46-25)][25]>H_map[counter-46-18][18]&&H_map[(counter-46-25)][25]>H_map[counter-46-19][19]&&
 				H_map[(counter-46-25)][25]>H_map[counter-46-20][20]&&H_map[(counter-46-25)][25]>H_map[counter-46-21][21]&&H_map[(counter-46-25)][25]>H_map[counter-46-22][22]&&
 				H_map[(counter-46-25)][25]>H_map[counter-46-23][23]&&H_map[(counter-46-25)][25]>H_map[counter-46-24][24]&&H_map[(counter-46-25)][25]>H_map[counter-46-26][26]&&
 				H_map[(counter-46-25)][25]>H_map[counter-46-27][27]&&H_map[(counter-46-25)][25]>H_map[counter-46-28][28]&&H_map[(counter-46-25)][25]>H_map[counter-46-29][29]&&
@@ -440,7 +439,7 @@ always@(*)begin
 					y = 25;
 			end
 			//(8,26)
-			else if(H_map[(counter-46-26)][26]>H_map[counter-46-17][17]&&H_map[(counter-46-26)][26]>H_map[(counter-46-18][18]&&H_map[(counter-46-26)][26]>H_map[counter-46-19][19]&&
+			else if(H_map[(counter-46-26)][26]>H_map[counter-46-17][17]&&H_map[(counter-46-26)][26]>H_map[counter-46-18][18]&&H_map[(counter-46-26)][26]>H_map[counter-46-19][19]&&
 				H_map[(counter-46-26)][26]>H_map[counter-46-20][20]&&H_map[(counter-46-26)][26]>H_map[counter-46-21][21]&&H_map[(counter-46-26)][26]>H_map[counter-46-22][22]&&
 				H_map[(counter-46-26)][26]>H_map[counter-46-23][23]&&H_map[(counter-46-26)][26]>H_map[counter-46-24][24]&&H_map[(counter-46-26)][26]>H_map[counter-46-25][25]&&
 				H_map[(counter-46-26)][26]>H_map[counter-46-27][27]&&H_map[(counter-46-26)][26]>H_map[counter-46-28][28]&&H_map[(counter-46-26)][26]>H_map[counter-46-29][29]&&
@@ -450,7 +449,7 @@ always@(*)begin
 					y = 26;
 			end
 			//(7,27)
-			else if(H_map[(counter-46-27)][27]>H_map[counter-46-17][17]&&H_map[(counter-46-27)][27]>H_map[(counter-46-18][18]&&H_map[(counter-46-27)][27]>H_map[counter-46-19][19]&&
+			else if(H_map[(counter-46-27)][27]>H_map[counter-46-17][17]&&H_map[(counter-46-27)][27]>H_map[counter-46-18][18]&&H_map[(counter-46-27)][27]>H_map[counter-46-19][19]&&
 				H_map[(counter-46-27)][27]>H_map[counter-46-20][20]&&H_map[(counter-46-27)][27]>H_map[counter-46-21][21]&&H_map[(counter-46-27)][27]>H_map[counter-46-22][22]&&
 				H_map[(counter-46-27)][27]>H_map[counter-46-23][23]&&H_map[(counter-46-27)][27]>H_map[counter-46-24][24]&&H_map[(counter-46-27)][27]>H_map[counter-46-25][25]&&
 				H_map[(counter-46-27)][27]>H_map[counter-46-26][26]&&H_map[(counter-46-27)][27]>H_map[counter-46-28][28]&&H_map[(counter-46-27)][27]>H_map[counter-46-29][29]&&
@@ -460,7 +459,7 @@ always@(*)begin
 					y = 27;
 			end
 			//(6,28)
-			else if(H_map[(counter-46-28)][28]>H_map[counter-46-17][17]&&H_map[(counter-46-28)][28]>H_map[(counter-46-18][18]&&H_map[(counter-46-28)][28]>H_map[counter-46-19][19]&&
+			else if(H_map[(counter-46-28)][28]>H_map[counter-46-17][17]&&H_map[(counter-46-28)][28]>H_map[counter-46-18][18]&&H_map[(counter-46-28)][28]>H_map[counter-46-19][19]&&
 				H_map[(counter-46-28)][28]>H_map[counter-46-20][20]&&H_map[(counter-46-28)][28]>H_map[counter-46-21][21]&&H_map[(counter-46-28)][28]>H_map[counter-46-22][22]&&
 				H_map[(counter-46-28)][28]>H_map[counter-46-23][23]&&H_map[(counter-46-28)][28]>H_map[counter-46-24][24]&&H_map[(counter-46-28)][28]>H_map[counter-46-25][25]&&
 				H_map[(counter-46-28)][28]>H_map[counter-46-26][26]&&H_map[(counter-46-28)][28]>H_map[counter-46-27][27]&&H_map[(counter-46-28)][28]>H_map[counter-46-29][29]&&
@@ -470,7 +469,7 @@ always@(*)begin
 					y = 28;
 			end
 			//(5,29)
-			else if(H_map[(counter-46-29)][29]>H_map[counter-46-17][17]&&H_map[(counter-46-29)][29]>H_map[(counter-46-18][18]&&H_map[(counter-46-29)][29]>H_map[counter-46-19][19]&&
+			else if(H_map[(counter-46-29)][29]>H_map[counter-46-17][17]&&H_map[(counter-46-29)][29]>H_map[counter-46-18][18]&&H_map[(counter-46-29)][29]>H_map[counter-46-19][19]&&
 				H_map[(counter-46-29)][29]>H_map[counter-46-20][20]&&H_map[(counter-46-29)][29]>H_map[counter-46-21][21]&&H_map[(counter-46-29)][29]>H_map[counter-46-22][22]&&
 				H_map[(counter-46-29)][29]>H_map[counter-46-23][23]&&H_map[(counter-46-29)][29]>H_map[counter-46-24][24]&&H_map[(counter-46-29)][29]>H_map[counter-46-25][25]&&
 				H_map[(counter-46-29)][29]>H_map[counter-46-26][26]&&H_map[(counter-46-29)][29]>H_map[counter-46-27][27]&&H_map[(counter-46-29)][29]>H_map[counter-46-28][28]&&
@@ -480,7 +479,7 @@ always@(*)begin
 					y = 29;
 			end
 			//(4,30)
-			else if(H_map[(counter-46-30)][30]>H_map[counter-46-17][17]&&H_map[(counter-46-30)][30]>H_map[(counter-46-18][18]&&H_map[(counter-46-30)][30]>H_map[counter-46-19][19]&&
+			else if(H_map[(counter-46-30)][30]>H_map[counter-46-17][17]&&H_map[(counter-46-30)][30]>H_map[counter-46-18][18]&&H_map[(counter-46-30)][30]>H_map[counter-46-19][19]&&
 				H_map[(counter-46-30)][30]>H_map[counter-46-20][20]&&H_map[(counter-46-30)][30]>H_map[counter-46-21][21]&&H_map[(counter-46-30)][30]>H_map[counter-46-22][22]&&
 				H_map[(counter-46-30)][30]>H_map[counter-46-23][23]&&H_map[(counter-46-30)][30]>H_map[counter-46-24][24]&&H_map[(counter-46-30)][30]>H_map[counter-46-25][25]&&
 				H_map[(counter-46-30)][30]>H_map[counter-46-26][26]&&H_map[(counter-46-30)][30]>H_map[counter-46-27][27]&&H_map[(counter-46-30)][30]>H_map[counter-46-28][28]&&
@@ -490,7 +489,7 @@ always@(*)begin
 					y = 30;
 			end
 			//(3,31)
-			else if(H_map[(counter-46-31)][31]>H_map[counter-46-17][17]&&H_map[(counter-46-31)][31]>H_map[(counter-46-18][18]&&H_map[(counter-46-31)][31]>H_map[counter-46-19][19]&&
+			else if(H_map[(counter-46-31)][31]>H_map[counter-46-17][17]&&H_map[(counter-46-31)][31]>H_map[counter-46-18][18]&&H_map[(counter-46-31)][31]>H_map[counter-46-19][19]&&
 				H_map[(counter-46-31)][31]>H_map[counter-46-20][20]&&H_map[(counter-46-31)][31]>H_map[counter-46-21][21]&&H_map[(counter-46-31)][31]>H_map[counter-46-22][22]&&
 				H_map[(counter-46-31)][31]>H_map[counter-46-23][23]&&H_map[(counter-46-31)][31]>H_map[counter-46-24][24]&&H_map[(counter-46-31)][31]>H_map[counter-46-25][25]&&
 				H_map[(counter-46-31)][31]>H_map[counter-46-26][26]&&H_map[(counter-46-31)][31]>H_map[counter-46-27][27]&&H_map[(counter-46-31)][31]>H_map[counter-46-28][28]&&
@@ -500,7 +499,7 @@ always@(*)begin
 					y = 31;
 			end
 			//(2,32)
-			else if(H_map[(counter-46-32)][32]>H_map[counter-46-17][17]&&H_map[(counter-46-32)][32]>H_map[(counter-46-18][18]&&H_map[(counter-46-32)][32]>H_map[counter-46-19][19]&&
+			else if(H_map[(counter-46-32)][32]>H_map[counter-46-17][17]&&H_map[(counter-46-32)][32]>H_map[counter-46-18][18]&&H_map[(counter-46-32)][32]>H_map[counter-46-19][19]&&
 				H_map[(counter-46-32)][32]>H_map[counter-46-20][20]&&H_map[(counter-46-32)][32]>H_map[counter-46-21][21]&&H_map[(counter-46-32)][32]>H_map[counter-46-22][22]&&
 				H_map[(counter-46-32)][32]>H_map[counter-46-23][23]&&H_map[(counter-46-32)][32]>H_map[counter-46-24][24]&&H_map[(counter-46-32)][32]>H_map[counter-46-25][25]&&
 				H_map[(counter-46-32)][32]>H_map[counter-46-26][26]&&H_map[(counter-46-32)][32]>H_map[counter-46-27][27]&&H_map[(counter-46-32)][32]>H_map[counter-46-28][28]&&
