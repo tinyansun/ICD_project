@@ -167,12 +167,38 @@ always@(*)begin
 				S_map[i][counter-94-i] = R[i] == Q[counter-94-i] ? match : mismatch;
 				I_map[i][counter-94-i] = H_map[i][(counter-94-i)-1] - open > I_map[i][(counter-94-i)-1] - extend ? H_map[i][(counter-94-i)-1] - open : I_map[i][(counter-94-i)-1] - extend;
 				D_map[i][counter-94-i] = H_map[i-1][(counter-94-i)] - open > D_map[i-1][(counter-94-i)] - extend ? H_map[i-1][(counter-94-i)] - open : D_map[i-1][(counter-94-i)] - extend;
+				//H_map
+				if(	H_map[i-1][(counter-94-i)-1] + S_map[i][counter-94-i] >= I_map[i][counter-94-i] && H_map[i-1][(counter-94-i)-1] + S_map[i][counter-94-i] >= D_map[i][counter-94-i] && H_map[i-1][(counter-94-i)-1] + S_map[i][counter-94-i] >= 0)begin
+					H_map[i][counter-94-i] = H_map[i-1][(counter-94-i)-1] + S_map[i][counter-94-i];
+				end
+				else if(I_map[i][counter-94-i] >= H_map[i-1][(counter-94-i)-1] + S_map[i][counter-94-i] && I_map[i][counter-94-i] >= D_map[i][counter-94-i] && I_map[i][counter-94-i] >= 0)begin
+					H_map[i][counter-94-i] = I_map[i][counter-94-i];
+				end
+				else if(D_map[i][counter-94-i] >= H_map[i-1][(counter-94-i)-1] + S_map[i][counter-94-i] && D_map[i][counter-94-i] >= I_map[i][counter-94-i] && D_map[i][counter-94-i] >= 0)begin
+					H_map[i][counter-94-i] = D_map[i][counter-94-i];
+				end
+				else begin
+					H_map[i][counter-94-i] = 0;
+				end
 			end
 			
 			for(i=64; i>counter-79; i=i-1)begin
 				S_map[i][counter-46-i] = R[i] == Q[counter-46-i] ? match : mismatch;
 				I_map[i][counter-46-i] = H_map[i][(counter-46-i)-1] - open > I_map[i][(counter-46-i)-1] - extend ? H_map[i][(counter-46-i)-1] - open : I_map[i][(counter-46-i)-1] - extend;
 				D_map[i][counter-46-i] = H_map[i-1][(counter-46-i)] - open > D_map[i-1][(counter-46-i)] - extend ? H_map[i-1][(counter-46-i)] - open : D_map[i-1][(counter-46-i)] - extend;
+				//H_map
+				if(	H_map[i-1][(counter-46-i)-1] + S_map[i][counter-46-i] >= I_map[i][counter-46-i] && H_map[i-1][(counter-46-i)-1] + S_map[i][counter-46-i] >= D_map[i][counter-46-i] && H_map[i-1][(counter-46-i)-1] + S_map[i][counter-46-i] >= 0)begin
+					H_map[i][counter-46-i] = H_map[i-1][(counter-46-i)-1] + S_map[i][counter-46-i];
+				end
+				else if(I_map[i][counter-46-i] >= H_map[i-1][(counter-46-i)-1] + S_map[i][counter-46-i] && I_map[i][counter-46-i] >= D_map[i][counter-46-i] && I_map[i][counter-46-i] >= 0)begin
+					H_map[i][counter-46-i] = I_map[i][counter-46-i];
+				end
+				else if(D_map[i][counter-46-i] >= H_map[i-1][(counter-46-i)-1] + S_map[i][counter-46-i] && D_map[i][counter-46-i] >= I_map[i][counter-46-i] && D_map[i][counter-46-i] >= 0)begin
+					H_map[i][counter-46-i] = D_map[i][counter-46-i];
+				end
+				else begin
+					H_map[i][counter-46-i] = 0;
+				end
 			end
 		end
 		else if(144 <= counter <= 191)begin
