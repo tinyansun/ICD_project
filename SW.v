@@ -351,8 +351,165 @@ always@(*)begin
 			end
 		end
 		else if(80 <= counter <= 127)begin
-			for(i=17; i<=32; i=i+1)begin
-				
+			//(17,17)
+			if(H_map[(counter-46-17)][17]>H_map[counter-46-18][18]&&H_map[(counter-46-17)][17]>H_map[(counter-46-19][19]&&H_map[(counter-46-17)][17]>H_map[counter-46-20][20]&&
+				H_map[(counter-46-17)][17]>H_map[counter-46-21][21]&&H_map[(counter-46-17)][17]>H_map[counter-46-22][22]&&H_map[(counter-46-17)][17]>H_map[counter-46-23][23]&&
+				H_map[(counter-46-17)][17]>H_map[counter-46-24][24]&&H_map[(counter-46-17)][17]>H_map[counter-46-25][25]&&H_map[(counter-46-17)][17]>H_map[counter-46-26][26]&&
+				H_map[(counter-46-17)][17]>H_map[counter-46-27][27]&&H_map[(counter-46-17)][17]>H_map[counter-46-28][28]&&H_map[(counter-46-17)][17]>H_map[counter-46-29][29]&&
+				H_map[(counter-46-17)][17]>H_map[counter-46-30][30]&&H_map[(counter-46-17)][17]>H_map[counter-46-31][31]&&H_map[(counter-46-17)][17]>H_map[counter-46-32][32])begin
+					H_map_value = H_map[(counter-46-17)][17];
+					x = (counter-46-17);
+					y = 17;
+			end
+			//(16,18)
+			else if(H_map[(counter-46-18)][18]>H_map[counter-46-17][17]&&H_map[(counter-46-18)][18]>H_map[(counter-46-19][19]&&H_map[(counter-46-18)][18]>H_map[counter-46-20][20]&&
+				H_map[(counter-46-18)][18]>H_map[counter-46-21][21]&&H_map[(counter-46-18)][18]>H_map[counter-46-22][22]&&H_map[(counter-46-18)][18]>H_map[counter-46-23][23]&&
+				H_map[(counter-46-18)][18]>H_map[counter-46-24][24]&&H_map[(counter-46-18)][18]>H_map[counter-46-25][25]&&H_map[(counter-46-18)][18]>H_map[counter-46-26][26]&&
+				H_map[(counter-46-18)][18]>H_map[counter-46-27][27]&&H_map[(counter-46-18)][18]>H_map[counter-46-28][28]&&H_map[(counter-46-18)][18]>H_map[counter-46-29][29]&&
+				H_map[(counter-46-18)][18]>H_map[counter-46-30][30]&&H_map[(counter-46-18)][18]>H_map[counter-46-31][31]&&H_map[(counter-46-18)][18]>H_map[counter-46-32][32])begin
+					H_map_value = H_map[(counter-46-18)][18];
+					x = (counter-46-18);
+					y = 18;
+			end
+			//(15,19)
+			else if(H_map[(counter-46-19)][19]>H_map[counter-46-17][17]&&H_map[(counter-46-19)][19]>H_map[(counter-46-18][18]&&H_map[(counter-46-19)][19]>H_map[counter-46-20][20]&&
+				H_map[(counter-46-19)][19]>H_map[counter-46-21][21]&&H_map[(counter-46-19)][19]>H_map[counter-46-22][22]&&H_map[(counter-46-19)][19]>H_map[counter-46-23][23]&&
+				H_map[(counter-46-19)][19]>H_map[counter-46-24][24]&&H_map[(counter-46-19)][19]>H_map[counter-46-25][25]&&H_map[(counter-46-19)][19]>H_map[counter-46-26][26]&&
+				H_map[(counter-46-19)][19]>H_map[counter-46-27][27]&&H_map[(counter-46-19)][19]>H_map[counter-46-28][28]&&H_map[(counter-46-19)][19]>H_map[counter-46-29][29]&&
+				H_map[(counter-46-19)][19]>H_map[counter-46-30][30]&&H_map[(counter-46-19)][19]>H_map[counter-46-31][31]&&H_map[(counter-46-19)][19]>H_map[counter-46-32][32])begin
+					H_map_value = H_map[(counter-46-19)][19];
+					x = (counter-46-19);
+					y = 19;
+			end
+			//(14,20)
+			else if(H_map[(counter-46-20)][20]>H_map[counter-46-17][17]&&H_map[(counter-46-20)][20]>H_map[(counter-46-18][18]&&H_map[(counter-46-20)][20]>H_map[counter-46-19][19]&&
+				H_map[(counter-46-20)][20]>H_map[counter-46-21][21]&&H_map[(counter-46-20)][20]>H_map[counter-46-22][22]&&H_map[(counter-46-20)][20]>H_map[counter-46-23][23]&&
+				H_map[(counter-46-20)][20]>H_map[counter-46-24][24]&&H_map[(counter-46-20)][20]>H_map[counter-46-25][25]&&H_map[(counter-46-20)][20]>H_map[counter-46-26][26]&&
+				H_map[(counter-46-20)][20]>H_map[counter-46-27][27]&&H_map[(counter-46-20)][20]>H_map[counter-46-28][28]&&H_map[(counter-46-20)][20]>H_map[counter-46-29][29]&&
+				H_map[(counter-46-20)][20]>H_map[counter-46-30][30]&&H_map[(counter-46-20)][20]>H_map[counter-46-31][31]&&H_map[(counter-46-20)][20]>H_map[counter-46-32][32])begin
+					H_map_value = H_map[(counter-46-20)][20];
+					x = (counter-46-20);
+					y = 20;
+			end
+			//(13,21)
+			else if(H_map[(counter-46-21)][21]>H_map[counter-46-17][17]&&H_map[(counter-46-21)][21]>H_map[(counter-46-18][18]&&H_map[(counter-46-21)][21]>H_map[counter-46-19][19]&&
+				H_map[(counter-46-21)][21]>H_map[counter-46-20][20]&&H_map[(counter-46-21)][21]>H_map[counter-46-22][22]&&H_map[(counter-46-21)][21]>H_map[counter-46-23][23]&&
+				H_map[(counter-46-21)][21]>H_map[counter-46-24][24]&&H_map[(counter-46-21)][21]>H_map[counter-46-25][25]&&H_map[(counter-46-21)][21]>H_map[counter-46-26][26]&&
+				H_map[(counter-46-21)][21]>H_map[counter-46-27][27]&&H_map[(counter-46-21)][21]>H_map[counter-46-28][28]&&H_map[(counter-46-21)][21]>H_map[counter-46-29][29]&&
+				H_map[(counter-46-21)][21]>H_map[counter-46-30][30]&&H_map[(counter-46-21)][21]>H_map[counter-46-31][31]&&H_map[(counter-46-21)][21]>H_map[counter-46-32][32])begin
+					H_map_value = H_map[(counter-46-21)][21];
+					x = (counter-46-21);
+					y = 21;
+			end
+			//(12,22)
+			else if(H_map[(counter-46-22)][22]>H_map[counter-46-17][17]&&H_map[(counter-46-22)][22]>H_map[(counter-46-18][18]&&H_map[(counter-46-22)][22]>H_map[counter-46-19][19]&&
+				H_map[(counter-46-22)][22]>H_map[counter-46-20][20]&&H_map[(counter-46-22)][22]>H_map[counter-46-21][21]&&H_map[(counter-46-22)][22]>H_map[counter-46-23][23]&&
+				H_map[(counter-46-22)][22]>H_map[counter-46-24][24]&&H_map[(counter-46-22)][22]>H_map[counter-46-25][25]&&H_map[(counter-46-22)][22]>H_map[counter-46-26][26]&&
+				H_map[(counter-46-22)][22]>H_map[counter-46-27][27]&&H_map[(counter-46-22)][22]>H_map[counter-46-28][28]&&H_map[(counter-46-22)][22]>H_map[counter-46-29][29]&&
+				H_map[(counter-46-22)][22]>H_map[counter-46-30][30]&&H_map[(counter-46-22)][22]>H_map[counter-46-31][31]&&H_map[(counter-46-22)][22]>H_map[counter-46-32][32])begin
+					H_map_value = H_map[(counter-46-22)][22];
+					x = (counter-46-22);
+					y = 22;
+			end
+			//(11,23)
+			else if(H_map[(counter-46-23)][23]>H_map[counter-46-17][17]&&H_map[(counter-46-23)][23]>H_map[(counter-46-18][18]&&H_map[(counter-46-23)][23]>H_map[counter-46-19][19]&&
+				H_map[(counter-46-23)][23]>H_map[counter-46-20][20]&&H_map[(counter-46-23)][23]>H_map[counter-46-21][21]&&H_map[(counter-46-23)][23]>H_map[counter-46-22][22]&&
+				H_map[(counter-46-23)][23]>H_map[counter-46-24][24]&&H_map[(counter-46-23)][23]>H_map[counter-46-25][25]&&H_map[(counter-46-23)][23]>H_map[counter-46-26][26]&&
+				H_map[(counter-46-23)][23]>H_map[counter-46-27][27]&&H_map[(counter-46-23)][23]>H_map[counter-46-28][28]&&H_map[(counter-46-23)][23]>H_map[counter-46-29][29]&&
+				H_map[(counter-46-23)][23]>H_map[counter-46-30][30]&&H_map[(counter-46-23)][23]>H_map[counter-46-31][31]&&H_map[(counter-46-23)][23]>H_map[counter-46-32][32])begin
+					H_map_value = H_map[(counter-46-23)][23];
+					x = (counter-46-23);
+					y = 23;
+			end
+			//(10,24)
+			else if(H_map[(counter-46-24)][24]>H_map[counter-46-17][17]&&H_map[(counter-46-24)][24]>H_map[(counter-46-18][18]&&H_map[(counter-46-24)][24]>H_map[counter-46-19][19]&&
+				H_map[(counter-46-24)][24]>H_map[counter-46-20][20]&&H_map[(counter-46-24)][24]>H_map[counter-46-21][21]&&H_map[(counter-46-24)][24]>H_map[counter-46-22][22]&&
+				H_map[(counter-46-24)][24]>H_map[counter-46-23][23]&&H_map[(counter-46-24)][24]>H_map[counter-46-25][25]&&H_map[(counter-46-24)][24]>H_map[counter-46-26][26]&&
+				H_map[(counter-46-24)][24]>H_map[counter-46-27][27]&&H_map[(counter-46-24)][24]>H_map[counter-46-28][28]&&H_map[(counter-46-24)][24]>H_map[counter-46-29][29]&&
+				H_map[(counter-46-24)][24]>H_map[counter-46-30][30]&&H_map[(counter-46-24)][24]>H_map[counter-46-31][31]&&H_map[(counter-46-24)][24]>H_map[counter-46-32][32])begin
+					H_map_value = H_map[(counter-46-24)][24];
+					x = (counter-46-24);
+					y = 24;
+			end
+			//(9,25)
+			else if(H_map[(counter-46-25)][25]>H_map[counter-46-17][17]&&H_map[(counter-46-25)][25]>H_map[(counter-46-18][18]&&H_map[(counter-46-25)][25]>H_map[counter-46-19][19]&&
+				H_map[(counter-46-25)][25]>H_map[counter-46-20][20]&&H_map[(counter-46-25)][25]>H_map[counter-46-21][21]&&H_map[(counter-46-25)][25]>H_map[counter-46-22][22]&&
+				H_map[(counter-46-25)][25]>H_map[counter-46-23][23]&&H_map[(counter-46-25)][25]>H_map[counter-46-24][24]&&H_map[(counter-46-25)][25]>H_map[counter-46-26][26]&&
+				H_map[(counter-46-25)][25]>H_map[counter-46-27][27]&&H_map[(counter-46-25)][25]>H_map[counter-46-28][28]&&H_map[(counter-46-25)][25]>H_map[counter-46-29][29]&&
+				H_map[(counter-46-25)][25]>H_map[counter-46-30][30]&&H_map[(counter-46-25)][25]>H_map[counter-46-31][31]&&H_map[(counter-46-25)][25]>H_map[counter-46-32][32])begin
+					H_map_value = H_map[(counter-46-25)][25];
+					x = (counter-46-25);
+					y = 25;
+			end
+			//(8,26)
+			else if(H_map[(counter-46-26)][26]>H_map[counter-46-17][17]&&H_map[(counter-46-26)][26]>H_map[(counter-46-18][18]&&H_map[(counter-46-26)][26]>H_map[counter-46-19][19]&&
+				H_map[(counter-46-26)][26]>H_map[counter-46-20][20]&&H_map[(counter-46-26)][26]>H_map[counter-46-21][21]&&H_map[(counter-46-26)][26]>H_map[counter-46-22][22]&&
+				H_map[(counter-46-26)][26]>H_map[counter-46-23][23]&&H_map[(counter-46-26)][26]>H_map[counter-46-24][24]&&H_map[(counter-46-26)][26]>H_map[counter-46-25][25]&&
+				H_map[(counter-46-26)][26]>H_map[counter-46-27][27]&&H_map[(counter-46-26)][26]>H_map[counter-46-28][28]&&H_map[(counter-46-26)][26]>H_map[counter-46-29][29]&&
+				H_map[(counter-46-26)][26]>H_map[counter-46-30][30]&&H_map[(counter-46-26)][26]>H_map[counter-46-31][31]&&H_map[(counter-46-26)][26]>H_map[counter-46-32][32])begin
+					H_map_value = H_map[(counter-46-26)][26];
+					x = (counter-46-26);
+					y = 26;
+			end
+			//(7,27)
+			else if(H_map[(counter-46-27)][27]>H_map[counter-46-17][17]&&H_map[(counter-46-27)][27]>H_map[(counter-46-18][18]&&H_map[(counter-46-27)][27]>H_map[counter-46-19][19]&&
+				H_map[(counter-46-27)][27]>H_map[counter-46-20][20]&&H_map[(counter-46-27)][27]>H_map[counter-46-21][21]&&H_map[(counter-46-27)][27]>H_map[counter-46-22][22]&&
+				H_map[(counter-46-27)][27]>H_map[counter-46-23][23]&&H_map[(counter-46-27)][27]>H_map[counter-46-24][24]&&H_map[(counter-46-27)][27]>H_map[counter-46-25][25]&&
+				H_map[(counter-46-27)][27]>H_map[counter-46-26][26]&&H_map[(counter-46-27)][27]>H_map[counter-46-28][28]&&H_map[(counter-46-27)][27]>H_map[counter-46-29][29]&&
+				H_map[(counter-46-27)][27]>H_map[counter-46-30][30]&&H_map[(counter-46-27)][27]>H_map[counter-46-31][31]&&H_map[(counter-46-27)][27]>H_map[counter-46-32][32])begin
+					H_map_value = H_map[(counter-46-27)][27];
+					x = (counter-46-27);
+					y = 27;
+			end
+			//(6,28)
+			else if(H_map[(counter-46-28)][28]>H_map[counter-46-17][17]&&H_map[(counter-46-28)][28]>H_map[(counter-46-18][18]&&H_map[(counter-46-28)][28]>H_map[counter-46-19][19]&&
+				H_map[(counter-46-28)][28]>H_map[counter-46-20][20]&&H_map[(counter-46-28)][28]>H_map[counter-46-21][21]&&H_map[(counter-46-28)][28]>H_map[counter-46-22][22]&&
+				H_map[(counter-46-28)][28]>H_map[counter-46-23][23]&&H_map[(counter-46-28)][28]>H_map[counter-46-24][24]&&H_map[(counter-46-28)][28]>H_map[counter-46-25][25]&&
+				H_map[(counter-46-28)][28]>H_map[counter-46-26][26]&&H_map[(counter-46-28)][28]>H_map[counter-46-27][27]&&H_map[(counter-46-28)][28]>H_map[counter-46-29][29]&&
+				H_map[(counter-46-28)][28]>H_map[counter-46-30][30]&&H_map[(counter-46-28)][28]>H_map[counter-46-31][31]&&H_map[(counter-46-28)][28]>H_map[counter-46-32][32])begin
+					H_map_value = H_map[(counter-46-28)][28];
+					x = (counter-46-28);
+					y = 28;
+			end
+			//(5,29)
+			else if(H_map[(counter-46-29)][29]>H_map[counter-46-17][17]&&H_map[(counter-46-29)][29]>H_map[(counter-46-18][18]&&H_map[(counter-46-29)][29]>H_map[counter-46-19][19]&&
+				H_map[(counter-46-29)][29]>H_map[counter-46-20][20]&&H_map[(counter-46-29)][29]>H_map[counter-46-21][21]&&H_map[(counter-46-29)][29]>H_map[counter-46-22][22]&&
+				H_map[(counter-46-29)][29]>H_map[counter-46-23][23]&&H_map[(counter-46-29)][29]>H_map[counter-46-24][24]&&H_map[(counter-46-29)][29]>H_map[counter-46-25][25]&&
+				H_map[(counter-46-29)][29]>H_map[counter-46-26][26]&&H_map[(counter-46-29)][29]>H_map[counter-46-27][27]&&H_map[(counter-46-29)][29]>H_map[counter-46-28][28]&&
+				H_map[(counter-46-29)][29]>H_map[counter-46-30][30]&&H_map[(counter-46-29)][29]>H_map[counter-46-31][31]&&H_map[(counter-46-29)][29]>H_map[counter-46-32][32])begin
+					H_map_value = H_map[(counter-46-29)][29];
+					x = (counter-46-29);
+					y = 29;
+			end
+			//(4,30)
+			else if(H_map[(counter-46-30)][30]>H_map[counter-46-17][17]&&H_map[(counter-46-30)][30]>H_map[(counter-46-18][18]&&H_map[(counter-46-30)][30]>H_map[counter-46-19][19]&&
+				H_map[(counter-46-30)][30]>H_map[counter-46-20][20]&&H_map[(counter-46-30)][30]>H_map[counter-46-21][21]&&H_map[(counter-46-30)][30]>H_map[counter-46-22][22]&&
+				H_map[(counter-46-30)][30]>H_map[counter-46-23][23]&&H_map[(counter-46-30)][30]>H_map[counter-46-24][24]&&H_map[(counter-46-30)][30]>H_map[counter-46-25][25]&&
+				H_map[(counter-46-30)][30]>H_map[counter-46-26][26]&&H_map[(counter-46-30)][30]>H_map[counter-46-27][27]&&H_map[(counter-46-30)][30]>H_map[counter-46-28][28]&&
+				H_map[(counter-46-30)][30]>H_map[counter-46-29][29]&&H_map[(counter-46-30)][30]>H_map[counter-46-31][31]&&H_map[(counter-46-30)][30]>H_map[counter-46-32][32])begin
+					H_map_value = H_map[(counter-46-30)][30];
+					x = (counter-46-30);
+					y = 30;
+			end
+			//(3,31)
+			else if(H_map[(counter-46-31)][31]>H_map[counter-46-17][17]&&H_map[(counter-46-31)][31]>H_map[(counter-46-18][18]&&H_map[(counter-46-31)][31]>H_map[counter-46-19][19]&&
+				H_map[(counter-46-31)][31]>H_map[counter-46-20][20]&&H_map[(counter-46-31)][31]>H_map[counter-46-21][21]&&H_map[(counter-46-31)][31]>H_map[counter-46-22][22]&&
+				H_map[(counter-46-31)][31]>H_map[counter-46-23][23]&&H_map[(counter-46-31)][31]>H_map[counter-46-24][24]&&H_map[(counter-46-31)][31]>H_map[counter-46-25][25]&&
+				H_map[(counter-46-31)][31]>H_map[counter-46-26][26]&&H_map[(counter-46-31)][31]>H_map[counter-46-27][27]&&H_map[(counter-46-31)][31]>H_map[counter-46-28][28]&&
+				H_map[(counter-46-31)][31]>H_map[counter-46-29][29]&&H_map[(counter-46-31)][31]>H_map[counter-46-30][30]&&H_map[(counter-46-31)][31]>H_map[counter-46-32][32])begin
+					H_map_value = H_map[(counter-46-31)][31];
+					x = (counter-46-31);
+					y = 31;
+			end
+			//(2,32)
+			else if(H_map[(counter-46-32)][32]>H_map[counter-46-17][17]&&H_map[(counter-46-32)][32]>H_map[(counter-46-18][18]&&H_map[(counter-46-32)][32]>H_map[counter-46-19][19]&&
+				H_map[(counter-46-32)][32]>H_map[counter-46-20][20]&&H_map[(counter-46-32)][32]>H_map[counter-46-21][21]&&H_map[(counter-46-32)][32]>H_map[counter-46-22][22]&&
+				H_map[(counter-46-32)][32]>H_map[counter-46-23][23]&&H_map[(counter-46-32)][32]>H_map[counter-46-24][24]&&H_map[(counter-46-32)][32]>H_map[counter-46-25][25]&&
+				H_map[(counter-46-32)][32]>H_map[counter-46-26][26]&&H_map[(counter-46-32)][32]>H_map[counter-46-27][27]&&H_map[(counter-46-32)][32]>H_map[counter-46-28][28]&&
+				H_map[(counter-46-32)][32]>H_map[counter-46-29][29]&&H_map[(counter-46-32)][32]>H_map[counter-46-30][30]&&H_map[(counter-46-32)][32]>H_map[counter-46-31][31])begin
+					H_map_value = H_map[(counter-46-32)][32];
+					x = (counter-46-32);
+					y = 32;
 			end
 		end
 		else if(128 <= counter <= 143)begin
